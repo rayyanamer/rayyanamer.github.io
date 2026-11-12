@@ -1,929 +1,636 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#F8F5EC">
-    <meta name="description" content="Rayyan Amer (WackyDink / RYNx86) — student, hobbyist developer, and curious tinkerer exploring games, robotics, microcontrollers, and space.">
-    <title>Rayyan Amer</title>
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'media', // Automatic dark mode based on device settings
-            theme: {
-                extend: {
-                    colors: {
-                        cream: '#FFFDF0',
-                        ink: '#0F172A',
-                        popPink: '#FF5C8D',
-                        popOrange: '#FF7A00',
-                        popYellow: '#FFC700',
-                        popGreen: '#00D696',
-                        popCyan: '#00C2FF',
-                        popPurple: '#B15EFF',
-                        accentBlue: '#3B82F6',
-                        
-                        /* Dark Mode Specific Colors */
-                        darkBg: '#090D16',
-                        darkCard: '#1E293B',
-                        darkBorder: '#334155'
-                    },
-                    fontFamily: {
-                        display: ['"Space Grotesk"', 'sans-serif'],
-                        hand: ['"Patrick Hand"', 'cursive'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', '"Space Mono"', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@600;800&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rayyan Amer (@rynx86) ■ Portfolio</title>
+  <!-- Imported Google Fonts for refined monospaced typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0b0c0e;
+      --bg-surface: #14171d;
+      --bg-surface-hover: #1b1f28;
+      --text-main: #d4d8e0;
+      --text-heading: #f0f3f8;
+      --muted: #8e96a4;
+      --subtle: #4e5563;
+      --border: #222731;
+      --border-accent: #2d3544;
+      
+      /* Dual Accent Colors */
+      --accent-primary: #DDFFAF;       /* Soft Lime/Mint Accent */
+      --accent-primary-muted: rgba(221, 255, 175, 0.12);
+      
+      --accent-secondary: #FF9F68;     /* Warm Coral/Terracotta Accent */
+      --accent-secondary-muted: rgba(255, 159, 104, 0.12);
+      
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'Fira Code', monospace;
+      --font-heading: 'Space Mono', var(--font-mono);
+    }
 
-    <style>
-        /* Base Playful Cartoon Radial Background */
-        body {
-            background-color: #F8F5EC;
-            color: #0F172A;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-image: radial-gradient(#94A3B8 2px, transparent 2px);
-            background-size: 26px 26px;
-            transition: background-color 0.25s ease, color 0.25s ease;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Automatic Device Dark Mode Styles */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #090D16;
-                color: #F8FAFC;
-                background-image: radial-gradient(#334155 2px, transparent 2px);
-            }
-            .github-icon-img {
-                filter: invert(1);
-            }
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        /* Base Neo-Brutalist Box Style */
-        .toon-box {
-            background: #ffffff;
-            border: 3.5px solid #0F172A;
-            box-shadow: 6px 6px 0px #0F172A;
-            border-radius: 20px;
-            transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.25s ease, border-color 0.25s ease;
-            position: relative;
-        }
+    body {
+      background-color: var(--bg);
+      /* Subtle tactile dot-matrix grid with a soft top radial ambient glow */
+      background-image: 
+        radial-gradient(ellipse 80% 45% at 50% -10%, rgba(221, 255, 175, 0.045), transparent 70%),
+        radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+      background-size: 100% 100%, 24px 24px;
+      background-position: 0 0, 12px 12px;
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      font-size: 0.925rem;
+      line-height: 1.75;
+      padding: 4rem 1.5rem;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
 
-        @media (prefers-color-scheme: dark) {
-            .toon-box {
-                background: #1E293B;
-                border-color: #0F172A;
-                box-shadow: 6px 6px 0px #000000;
-            }
-        }
+    /* Ultra-subtle procedural film/paper grain overlay for tactile depth */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
 
-        /* Dynamic Hover Rules: Interactive Cards vs Static Informational Cards */
-        .toon-box-interactive {
-            cursor: pointer;
-        }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
 
-        .toon-box-interactive:hover {
-            transform: translateY(-4px);
-            box-shadow: 10px 10px 0px #0F172A;
-        }
+    /* HEADER & IDENTITY */
+    header {
+      margin-bottom: 3.5rem;
+    }
 
-        @media (prefers-color-scheme: dark) {
-            .toon-box-interactive:hover {
-                box-shadow: 10px 10px 0px #000000;
-                border-color: #38BDF8;
-            }
-        }
+    .header-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
 
-        .toon-box-interactive:active {
-            transform: translateY(2px);
-            box-shadow: 3px 3px 0px #0F172A;
-        }
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
 
-        @media (prefers-color-scheme: dark) {
-            .toon-box-interactive:active {
-                box-shadow: 3px 3px 0px #000000;
-            }
-        }
+    .handle {
+      font-size: 0.875rem;
+      color: var(--accent-primary);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
 
-        /* Static Informational Cards (No Hover Movement) */
-        .toon-box-static:hover {
-            transform: none !important;
-            box-shadow: 6px 6px 0px #0F172A !important;
-        }
+    .subtitle-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
 
-        @media (prefers-color-scheme: dark) {
-            .toon-box-static:hover {
-                box-shadow: 6px 6px 0px #000000 !important;
-                border-color: #0F172A !important;
-            }
-        }
+    .location {
+      color: var(--accent-secondary);
+      font-weight: 500;
+    }
 
-        /* Interactive Cartoon Buttons */
-        .toon-btn {
-            border: 3.5px solid #0F172A;
-            box-shadow: 4px 4px 0px #0F172A;
-            border-radius: 16px;
-            font-weight: 800;
-            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s ease, filter 0.2s ease;
-            position: relative;
-            cursor: pointer;
-        }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--accent-primary);
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-accent);
+      padding: 0.4rem 0.9rem;
+      border-radius: 99px;
+    }
 
-        @media (prefers-color-scheme: dark) {
-            .toon-btn {
-                border-color: #0F172A;
-                box-shadow: 4px 4px 0px #000000;
-            }
-        }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--accent-primary);
+      border-radius: 50%;
+    }
 
-        .toon-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 8px 8px 0px #0F172A;
-            filter: saturate(1.12);
-        }
+    /* SECTION HEADERS */
+    section {
+      margin-bottom: 3.5rem;
+    }
 
-        @media (prefers-color-scheme: dark) {
-            .toon-btn:hover {
-                box-shadow: 8px 8px 0px #000000;
-            }
-        }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 0.775rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
 
-        .toon-btn:active {
-            transform: translateY(2px);
-            box-shadow: 2px 2px 0px #0F172A;
-        }
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: var(--border);
+    }
 
-        @media (prefers-color-scheme: dark) {
-            .toon-btn:active {
-                box-shadow: 2px 2px 0px #000000;
-            }
-        }
+    .title-sym {
+      font-size: 0.8rem;
+    }
 
-        /* Tab Bar Button Active Elevation Highlight */
-        .tab-btn.active-tab {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 7px 7px 0px #0F172A;
-            filter: saturate(1.2);
-            opacity: 1 !important;
-        }
+    /* BIO SECTION */
+    .bio-text {
+      color: var(--text-main);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
 
-        @media (prefers-color-scheme: dark) {
-            .tab-btn.active-tab {
-                box-shadow: 7px 7px 0px #000000;
-                border-color: #F8FAFC;
-            }
-        }
+    .quote-block {
+      border-left: 3px solid var(--accent-secondary);
+      background-color: var(--bg-surface);
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      border-radius: 0 10px 10px 0;
+      font-style: italic;
+    }
 
-        .icon-badge {
-            border: 2.5px solid #0F172A;
-            box-shadow: 3px 3px 0px #0F172A;
-            border-radius: 14px;
-            flex: 0 0 auto;
-        }
+    .quote-block .accent-text {
+      color: var(--accent-secondary);
+    }
 
-        @media (prefers-color-scheme: dark) {
-            .icon-badge {
-                border-color: #0F172A;
-                box-shadow: 3px 3px 0px #000000;
-            }
-        }
+    /* LINKS */
+    a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
 
-        .handwriting {
-            font-family: 'Caveat', 'Patrick Hand', cursive;
-        }
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
 
-        .heading-font {
-            font-family: 'Space Grotesk', sans-serif;
-        }
+    /* PROJECT CARDS */
+    .project-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
 
-        .mono-font {
-            font-family: 'JetBrains Mono', monospace;
-        }
+    .project-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
+      padding: 1.35rem 1.5rem;
+      border-radius: 12px;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
 
-        .stat-badge {
-            border: 2.5px solid #0F172A;
-            box-shadow: 3px 3px 0px #0F172A;
-            font-weight: 800;
-        }
+    .project-card:hover {
+      border-color: var(--border-accent);
+      background-color: var(--bg-surface-hover);
+    }
 
-        @media (prefers-color-scheme: dark) {
-            .stat-badge {
-                border-color: #0F172A;
-                box-shadow: 3px 3px 0px #000000;
-            }
-        }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.65rem;
+    }
 
-        a { -webkit-tap-highlight-color: transparent; }
-        a:focus-visible, button:focus-visible {
-            outline: 4px dashed #B15EFF;
-            outline-offset: 4px;
-        }
+    .project-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-heading);
+      letter-spacing: -0.01em;
+    }
 
-        .section-kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: .45rem;
-            font-size: .72rem;
-            font-weight: 900;
-            letter-spacing: .13em;
-            text-transform: uppercase;
-        }
+    .project-status {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--accent-secondary);
+      background-color: var(--accent-secondary-muted);
+      border: 1px solid rgba(255, 159, 104, 0.3);
+      padding: 0.15rem 0.55rem;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+    }
 
-        .mini-dot {
-            width: .55rem; height: .55rem; border: 2px solid #0F172A;
-            border-radius: 999px; background: #00D696; display: inline-block;
-        }
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+    }
 
-        .interest-card { min-height: 120px; }
-        .social-card { min-height: 72px; }
+    .tag-pill {
+      font-size: 0.725rem;
+      font-weight: 500;
+      color: var(--accent-secondary);
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
 
-        /* Smooth 0.28s Spring-like Seamless Tab Switch Animation */
-        .tab-content {
-            display: none;
-            opacity: 0;
-            transform: scale(0.985) translateY(6px);
-            will-change: transform, opacity;
-        }
-        
-        .tab-content.active {
-            display: block;
-            animation: snapToon 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
 
-        @keyframes snapToon {
-            0% {
-                opacity: 0;
-                transform: scale(0.985) translateY(6px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
+    /* DEVLOG ENTRIES */
+    .log-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
 
-        @media (prefers-reduced-motion: reduce) {
-            .tab-content.active {
-                animation: none !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
-            *, *::before, *::after { 
-                transition-duration: .01ms !important; 
-                animation-duration: .01ms !important; 
-            }
-        }
-    </style>
+    .log-item {
+      padding: 1.25rem 1.5rem;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color 0.2s ease;
+    }
+
+    .log-item:hover {
+      border-color: var(--border-accent);
+    }
+
+    .log-meta {
+      font-size: 0.75rem;
+      color: var(--subtle);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+
+    .log-meta .meta-date {
+      color: var(--accent-secondary);
+      font-weight: 500;
+    }
+
+    .log-meta .meta-tag {
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+
+    .log-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 0.4rem;
+    }
+
+    .log-summary {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* SOCIAL LINKS CARD CONTAINER */
+    .social-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      border-radius: 12px;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      list-style: none;
+    }
+
+    .social-links a {
+      font-size: 0.875rem;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-primary);
+    }
+
+    .social-links .sym {
+      color: var(--accent-secondary);
+      font-size: 0.75rem;
+    }
+
+    /* SEAMLESS TEXT-BASED FOOTER */
+    footer {
+      margin-top: 4.5rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.775rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      letter-spacing: 0.03em;
+    }
+
+    .footer-copyright {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-sep {
+      color: var(--subtle);
+    }
+
+    .footer-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .time-badge {
+      color: var(--accent-primary);
+      font-weight: 500;
+    }
+
+    .footer-note {
+      color: var(--subtle);
+    }
+  </style>
 </head>
-<body class="selection:bg-popYellow selection:text-ink min-h-screen pb-24 overflow-x-hidden">
+<body>
+  <div class="container">
+    <!-- HEADER SECTION -->
+    <header>
+      <div class="header-top">
+        <h1>Rayyan Amer</h1>
+        <span class="handle">@RYNx86</span>
+      </div>
+      
+      <div class="subtitle-row">
+        <span>Indie Game Developer &amp; Engineering Student</span>
+        <span class="location">✦ Pakistan, Earth, Solar System</span>
+      </div>
 
-    <div class="max-w-4xl mx-auto px-4 pt-6 md:pt-10 space-y-8">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>UPDATE! Life is geniunly cooked</span>
+      </div>
+    </header>
 
-        <!-- Header Navigation Bar -->
-        <header class="toon-box toon-box-static p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4 border-4">
-            
-            <!-- Brand Badge -->
-            <div class="bg-popYellow text-ink px-4 py-2 border-3 border-ink rounded-2xl flex items-center gap-2.5 shadow-[3px_3px_0px_#0F172A] shrink-0">
-                <i data-lucide="sparkles" class="w-6 h-6 shrink-0" aria-hidden="true"></i>
-                <span class="heading-font text-xl sm:text-2xl font-black tracking-tight">RAYYAN'S CORNER</span>
+    <main>
+      <!-- BIO -->
+      <section>
+        <h2 class="section-title"><span class="title-sym">■</span> OVERVIEW</h2>
+        <p class="bio-text">
+          I am a Human Being from Planet Earth who love making Video Games and Systems that work... I am currently a Pre-Engineering Student. 
+        </p>
+        <blockquote class="quote-block">
+          <span class="accent-text">✦</span> "Die with Memories, not Dreams."
+        </blockquote>
+      </section>
+
+      <!-- PROJECTS -->
+      <section>
+        <h2 class="section-title"><span class="title-sym">◆</span> some cool PROJECTS i made</h2>
+        <ul class="project-list">
+          <li class="project-card">
+            <div class="project-header">
+              <span class="project-title">
+                <a href="https://rayyanamer.itch.io/emberland" target="_blank" rel="noopener">Ember Light</a>
+              </span>
+              <span class="project-status">❖ Active Dev</span>
             </div>
-
-            <!-- 5-Tab Cartoon Navigation Status Bar -->
-            <nav class="flex flex-wrap gap-2 text-xs sm:text-sm font-extrabold w-full md:w-auto justify-center" aria-label="Main Navigation">
-                
-                <!-- Tab 1: Home -->
-                <button type="button" 
-                        onclick="switchTab('home', this)" 
-                        class="tab-btn toon-btn bg-popPink text-white hover:bg-pink-500 px-3.5 py-2 flex items-center gap-1.5 active-tab" 
-                        id="tab-btn-home"
-                        aria-controls="home"
-                        aria-selected="true">
-                    <i data-lucide="home" class="w-4 h-4 shrink-0" aria-hidden="true"></i>
-                    <span>Home</span>
-                </button>
-
-                <!-- Tab 2: About -->
-                <button type="button" 
-                        onclick="switchTab('about', this)" 
-                        class="tab-btn toon-btn bg-popPurple text-white hover:bg-purple-500 px-3.5 py-2 flex items-center gap-1.5 opacity-80 hover:opacity-100" 
-                        id="tab-btn-about"
-                        aria-controls="about"
-                        aria-selected="false">
-                    <i data-lucide="user-round" class="w-4 h-4 shrink-0" aria-hidden="true"></i>
-                    <span>About</span>
-                </button>
-
-                <!-- Tab 3: Projects -->
-                <button type="button" 
-                        onclick="switchTab('projects', this)" 
-                        class="tab-btn toon-btn bg-popGreen text-ink hover:bg-emerald-400 px-3.5 py-2 flex items-center gap-1.5 opacity-80 hover:opacity-100" 
-                        id="tab-btn-projects"
-                        aria-controls="projects"
-                        aria-selected="false">
-                    <i data-lucide="folder-git-2" class="w-4 h-4 shrink-0" aria-hidden="true"></i>
-                    <span>Projects</span>
-                </button>
-
-                <!-- Tab 4: Interests -->
-                <button type="button" 
-                        onclick="switchTab('stuff', this)" 
-                        class="tab-btn toon-btn bg-popCyan text-ink hover:bg-cyan-300 px-3.5 py-2 flex items-center gap-1.5 opacity-80 hover:opacity-100" 
-                        id="tab-btn-stuff"
-                        aria-controls="stuff"
-                        aria-selected="false">
-                    <i data-lucide="shapes" class="w-4 h-4 shrink-0" aria-hidden="true"></i>
-                    <span>Interests</span>
-                </button>
-
-                <!-- Tab 5: Links -->
-                <button type="button" 
-                        onclick="switchTab('links', this)" 
-                        class="tab-btn toon-btn bg-popOrange text-white hover:bg-orange-500 px-3.5 py-2 flex items-center gap-1.5 opacity-80 hover:opacity-100" 
-                        id="tab-btn-links"
-                        aria-controls="links"
-                        aria-selected="false">
-                    <i data-lucide="external-link" class="w-4 h-4 shrink-0" aria-hidden="true"></i>
-                    <span>Links</span>
-                </button>
-            </nav>
-        </header>
-
-        <!-- MAIN INTERACTIVE CONTAINER -->
-        <main>
-
-            <!-- ================= TAB 1: HOME ================= -->
-            <section id="home" class="tab-content active space-y-6" role="tabpanel" aria-labelledby="tab-btn-home">
-                
-                <!-- Hero Header Card (Static Informational Box) -->
-                <div class="toon-box toon-box-static p-6 md:p-8 space-y-6">
-                    
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-5 border-b-3 border-slate-200 dark:border-slate-700 pb-6">
-                        <div>
-                            <p class="section-kicker text-slate-600 dark:text-slate-400 mb-2">
-                                <span class="mini-dot"></span> Student · Hobbyist Developer
-                            </p>
-                            <h1 class="heading-font text-4xl sm:text-5xl font-black text-ink dark:text-slate-100 leading-tight tracking-tight">
-                                Rayyan Amer
-                            </h1>
-                            <p class="text-base sm:text-lg text-slate-800 dark:text-slate-200 font-extrabold mt-2 flex flex-wrap items-center gap-2">
-                                a.k.a 
-                                <span class="bg-popYellow text-ink px-3 py-0.5 rounded-xl border-2 border-ink shadow-[2px_2px_0px_#0F172A]">WackyDink</span> 
-                                or 
-                                <span class="bg-popPurple text-white px-3 py-0.5 rounded-xl border-2 border-ink shadow-[2px_2px_0px_#0F172A]">RYNx86</span>
-                            </p>
-                        </div>
-
-                        <div class="flex flex-wrap sm:flex-col gap-2.5 shrink-0">
-                            <span class="stat-badge bg-popPink text-white text-xs px-3.5 py-2 rounded-xl flex items-center gap-2 justify-center">
-                                <i data-lucide="cake" class="w-4 h-4 shrink-0" aria-hidden="true"></i>
-                                17 y/o • 20 Sep
-                            </span>
-                            <span class="stat-badge bg-popGreen text-ink text-xs px-3.5 py-2 rounded-xl flex items-center gap-2 justify-center">
-                                <i data-lucide="graduation-cap" class="w-4 h-4 shrink-0" aria-hidden="true"></i>
-                                Pre-Engineering
-                            </span>
-                            <span class="stat-badge bg-popCyan text-ink text-xs px-3.5 py-2 rounded-xl flex items-center gap-2 justify-center">
-                                <i data-lucide="map-pin" class="w-4 h-4 shrink-0" aria-hidden="true"></i>
-                                Pakistan
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Intro Bio Section -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                        <div class="md:col-span-2 space-y-4">
-                            <p class="text-slate-900 dark:text-slate-200 text-lg leading-relaxed font-semibold">        
-                                Basically a Human who is interested in Robotics, Game Development, Space Exploration, Chess, Minecraft,  Ethical Hac-, never mind, Basically im interested in everything except Study.
-                            </p>
-                            <p class="handwriting text-3xl text-popPurple dark:text-popCyan font-bold flex items-center gap-2">
-                                <i data-lucide="moon-star" class="w-6 h-6 shrink-0" aria-hidden="true"></i>
-                                Muslim • Intellectual (kinda) • Procrastinator
-                            </p>
-                            <div class="pt-2 flex flex-wrap gap-3">
-                                <button type="button" onclick="switchTab('projects', document.getElementById('tab-btn-projects'))" class="toon-btn bg-popGreen text-ink px-4 py-2 text-sm flex items-center gap-2">
-                                    <i data-lucide="folder-git-2" class="w-4 h-4"></i> View Projects
-                                </button>
-                                <button type="button" onclick="switchTab('about', document.getElementById('tab-btn-about'))" class="toon-btn bg-popPurple text-white px-4 py-2 text-sm flex items-center gap-2">
-                                    <i data-lucide="user-round" class="w-4 h-4"></i> More About Me
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Side Highlight Box (Static Informational Box) -->
-                        <div class="toon-box toon-box-static bg-gradient-to-br from-amber-100 to-amber-200 dark:from-slate-800 dark:to-slate-900 border-3 border-ink p-5 flex flex-col justify-center items-center text-center space-y-3">
-                            <div class="flex items-center gap-3 text-ink dark:text-slate-100 bg-white dark:bg-slate-800 p-2.5 rounded-xl border-2 border-ink shadow-[2px_2px_0px_#0F172A]">
-                                <i data-lucide="gamepad-2" class="w-6 h-6 shrink-0" aria-hidden="true"></i>
-                                <i data-lucide="cpu" class="w-6 h-6 shrink-0" aria-hidden="true"></i>
-                                <i data-lucide="rocket" class="w-6 h-6 shrink-0" aria-hidden="true"></i>
-                            </div>
-                            <p class="text-xs font-black text-slate-800 dark:text-slate-200 leading-snug">
-                                Building things based on my "sUpEr cReAtIvE tHiNkInG cApAcItY" and trusting the process (while never following it), cuz once an akalmand insaan said, Trust pr dunya QAIM hay...
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Featured Cards Preview (Static Informational Boxes) -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    <div class="toon-box toon-box-static bg-rose-50 dark:bg-slate-800 p-5 space-y-2">
-                        <div class="icon-badge bg-popPink text-white w-10 h-10 p-2 flex items-center justify-center">
-                            <i data-lucide="gamepad-2" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="heading-font font-black text-xl text-ink dark:text-slate-100">GameDev</h3>
-                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300 leading-relaxed">I make what i like and What i Desire. That's why i have 0 completed projects, lmao😭😭</p>
-                    </div>
-
-                    <div class="toon-box toon-box-static bg-emerald-50 dark:bg-slate-800 p-5 space-y-2">
-                        <div class="icon-badge bg-popGreen text-ink w-10 h-10 p-2 flex items-center justify-center">
-                            <i data-lucide="bot" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="heading-font font-black text-xl text-ink dark:text-slate-100">Hardware</h3>
-                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300 leading-relaxed">tbh, i once leaded the school project of making a ✨drone✨ with ESP32 but the fate was decided. I got cooked in that, infact DeepFried :(.</p>
-                    </div>
-
-                    <div class="toon-box toon-box-static bg-amber-50 dark:bg-slate-800 p-5 space-y-2">
-                        <div class="icon-badge bg-popYellow text-ink w-10 h-10 p-2 flex items-center justify-center">
-                            <i data-lucide="orbit" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="heading-font font-black text-xl text-ink dark:text-slate-100">Space & Math</h3>
-                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300 leading-relaxed">I suck in maths but love Space and Universe. like 👽👾🛸📡🔭🪐🛰️🚀 etc and also e8u38ehn3 :D</p>
-                    </div>
-                </div>
-
-            </section>
-
-            <!-- ================= TAB 2: ABOUT ================= -->
-            <section id="about" class="tab-content space-y-6" role="tabpanel" aria-labelledby="tab-btn-about">
-                
-                <div class="toon-box toon-box-static bg-white dark:bg-slate-800 p-6 md:p-8 space-y-6">
-                    <div class="border-b-3 border-slate-200 dark:border-slate-700 pb-4">
-                        <p class="section-kicker text-slate-600 dark:text-slate-400 mb-1">
-                            <i data-lucide="book-open" class="w-4 h-4"></i> Who I Am
-                        </p>
-                        <h2 class="heading-font text-3xl font-black text-ink dark:text-slate-100">
-                            About Rayyan Amer
-                        </h2>
-                    </div>
-
-                    <div class="space-y-4 text-slate-800 dark:text-slate-200 font-bold text-sm sm:text-base leading-relaxed">
-                        <p>
-                            I am a college student from Pakistan, currently tackling with FSc (Pre-Engineerig) and some Boredom.
-                        </p>
-                        <p>
-                            When im not in college, i am probably at home, either working on my GameProject (that doesn't exist) or DoomScrolling and sometimes, when i feel philosphical, play chess or badminton. Basically im a "Jack of All Trades but Master of None".
-                    
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Detailed Capability Box (Static Informational Box) -->
-                <div class="toon-box toon-box-static bg-white dark:bg-slate-800 p-6 md:p-8 space-y-6">
-                    <div class="flex items-center justify-between border-b-3 border-slate-200 dark:border-slate-700 pb-4">
-                        <div>
-                            <p class="section-kicker text-slate-600 dark:text-slate-400 mb-1">
-                                <i data-lucide="wrench" class="w-4 h-4"></i> Stuff I Do or Use
-                            </p>
-                            <h2 class="heading-font text-2xl font-black text-ink dark:text-slate-100">
-                                Technical Skillsets
-                            </h2>
-                        </div>
-                        <span class="handwriting text-3xl text-popPurple dark:text-popCyan font-bold hidden sm:inline">what I work with</span>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        
-                        <!-- Skill 1 -->
-                        <div class="toon-box toon-box-static bg-rose-50 dark:bg-slate-900 p-4 space-y-2">
-                            <div class="flex items-center gap-2 heading-font font-black text-ink dark:text-popPink">
-                                <i data-lucide="gamepad-2" class="w-5 h-5"></i> GameDev
-                            </div>
-                            <ul class="text-xs font-bold text-slate-700 dark:text-slate-300 space-y-1">
-                                <li>• Godot 4 (GDScript)</li>
-                                <li>• Unity 3D & C#</li>
-                                <li>• CCB6</li>
-                                <li>• OpenCode</li>
-                            </ul>
-                        </div>
-
-                        <!-- Skill 2 -->
-                        <div class="toon-box toon-box-static bg-emerald-50 dark:bg-slate-900 p-4 space-y-2">
-                            <div class="flex items-center gap-2 heading-font font-black text-ink dark:text-popGreen">
-                                <i data-lucide="cpu" class="w-5 h-5"></i> Hardware
-                            </div>
-                            <ul class="text-xs font-bold text-slate-700 dark:text-slate-300 space-y-1">
-                                <li>• ESP32 & Arduino</li>
-                                <li>• MPU6050 Sensors</li>
-                                <li>• Motor Drivers</li>
-                                <li>• Circuit Soldering</li>
-                            </ul>
-                        </div>
-
-                        <!-- Skill 3 -->
-                        <div class="toon-box toon-box-static bg-sky-50 dark:bg-slate-900 p-4 space-y-2">
-                            <div class="flex items-center gap-2 heading-font font-black text-ink dark:text-popCyan">
-                                <i data-lucide="code-2" class="w-5 h-5"></i> Code & Web
-                            </div>
-                            <ul class="text-xs font-bold text-slate-700 dark:text-slate-300 space-y-1">
-                                <li>• C# & C++</li>
-                                <li>• JavaScript & WebGL</li>
-                                <li>• HTML5 & TailWind</li>
-                                <li>• Python Scripts</li>
-                                <li>• GD Script</li>
-                            </ul>
-                        </div>
-
-                        <!-- Skill 4 -->
-                        <div class="toon-box toon-box-static bg-purple-50 dark:bg-slate-900 p-4 space-y-2">
-                            <div class="flex items-center gap-2 heading-font font-black text-ink dark:text-popPurple">
-                                <i data-lucide="terminal" class="w-5 h-5"></i> Systems
-                            </div>
-                            <ul class="text-xs font-bold text-slate-700 dark:text-slate-300 space-y-1">
-                                <li>• Windows</li>
-                                <li>• Git & GitHub</li>
-                                <li>• Debian, Kali and Sometimes TAILS</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-
-            </section>
-
-            <!-- ================= TAB 3: PROJECTS ================= -->
-            <section id="projects" class="tab-content space-y-6" role="tabpanel" aria-labelledby="tab-btn-projects">
-                
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                    <div>
-                        <p class="section-kicker text-slate-600 dark:text-slate-400 mb-1">
-                            <i data-lucide="folder-git-2" class="w-4 h-4"></i> Interactive Work
-                        </p>
-<br>
-                        <h2 class="heading-font text-2xl sm:text-3xl font-black text-ink bg-popGreen px-5 py-2 toon-box toon-box-static inline-block">
-                            Featured Projects
-                        </h2>
-                    </div>
-                     </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    
-                    <!-- Project 1 (Interactive Box) -->
-                    <div class="toon-box toon-box-interactive bg-rose-50 dark:bg-slate-800 p-6 flex flex-col justify-between space-y-4">
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between">
-                                <div class="icon-badge bg-popPink text-white p-2.5">
-                                    <i data-lucide="ghost" class="w-6 h-6"></i>
-                                </div>
-                                <span class="mono-font text-xs font-bold bg-popPink/20 text-popPink px-2.5 py-1 rounded-lg border border-popPink/40">Godot 4</span>
-                            </div>
-                            <h3 class="heading-font font-black text-2xl text-ink dark:text-slate-100">Artenag (Incomplete)</h3>
-                            <p class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed">
-                                A 3D Game based on a Concept of Player being a Radio Tower Mainatainer in Remote Facility. But you are not alone in that Facility. or Are You?
-                            </p>
-                        </div>
-                        <div class="pt-2 border-t-2 border-slate-300 dark:border-slate-700 flex flex-wrap gap-2">
-                            <span class="stat-badge bg-white dark:bg-slate-900 text-ink dark:text-slate-100 text-xs px-2.5 py-1 rounded-lg">GD Script</span>
-                            <span class="stat-badge bg-white dark:bg-slate-900 text-ink dark:text-slate-100 text-xs px-2.5 py-1 rounded-lg">GD Shader</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 (Interactive Box) -->
-                    <div class="toon-box toon-box-interactive bg-sky-50 dark:bg-slate-800 p-6 flex flex-col justify-between space-y-4">
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between">
-                                <div class="icon-badge bg-popCyan text-ink p-2.5">
-                                    <i data-lucide="mountain" class="w-6 h-6"></i>
-                                </div>
-                                <span class="mono-font text-xs font-bold bg-popCyan/20 text-cyan-600 dark:text-popCyan px-2.5 py-1 rounded-lg border border-popCyan/40">Three.js</span>
-                            </div>
-                            <h3 class="heading-font font-black text-2xl text-ink dark:text-slate-100">P.B.R.E</h3>
-                            <p class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed">
-                                A basic Python based 3D Renderer and Physics Engine built completely from Scratch.
-                            </p>
-                        </div>
-                        <div class="pt-2 border-t-2 border-slate-300 dark:border-slate-700 flex flex-wrap gap-2">
-                            <span class="stat-badge bg-white dark:bg-slate-900 text-ink dark:text-slate-100 text-xs px-2.5 py-1 rounded-lg">Python</span>
-                            <span class="stat-badge bg-white dark:bg-slate-900 text-ink dark:text-slate-100 text-xs px-2.5 py-1 rounded-lg">Procedural Math</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 (Interactive Box) -->
-                    <div class="toon-box toon-box-interactive bg-emerald-50 dark:bg-slate-800 p-6 flex flex-col justify-between space-y-4">
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between">
-                                <div class="icon-badge bg-popGreen text-ink p-2.5">
-                                    <i data-lucide="cpu" class="w-6 h-6"></i>
-                                </div>
-                                <span class="mono-font text-xs font-bold bg-popGreen/20 text-emerald-600 dark:text-popGreen px-2.5 py-1 rounded-lg border border-popGreen/40">Hardware</span>
-                            </div>
-                            <h3 class="heading-font font-black text-2xl text-ink dark:text-slate-100">ESP32 Flight Controller Rig</h3>
-                            <p class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed">
-                                A super basic Flight Controller for ESP32 Platform that works by combing MPU6050 and DR8833 modules for a Hardware and Uses ESP32's ROM to host a Web-based Remote Page that allow you to control the Drone by Connecting to the ESP32's WiFi. Pretty cool tho.
-                            </p>
-                        </div>
-                        <div class="pt-2 border-t-2 border-slate-300 dark:border-slate-700 flex flex-wrap gap-2">
-                            <span class="stat-badge bg-white dark:bg-slate-900 text-ink dark:text-slate-100 text-xs px-2.5 py-1 rounded-lg">Embedded C++/HTML</span>
-                            <span class="stat-badge bg-white dark:bg-slate-900 text-ink dark:text-slate-100 text-xs px-2.5 py-1 rounded-lg">ESP32 PID Stabalization (Basic)</span>
-                            <span class="stat-badge bg-white dark:bg-slate-900 text-ink dark:text-slate-100 text-xs px-2.5 py-1 rounded-lg">AutoPilot (to some extent)</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 4 (Interactive Box) -->
-                    <div class="toon-box toon-box-interactive bg-purple-50 dark:bg-slate-800 p-6 flex flex-col justify-between space-y-4">
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between">
-                                <div class="icon-badge bg-popPurple text-white p-2.5">
-                                    <i data-lucide="terminal" class="w-6 h-6"></i>
-                                </div>
-                                <span class="mono-font text-xs font-bold bg-popPurple/20 text-popPurple px-2.5 py-1 rounded-lg border border-popPurple/40">Open Source</span>
-                            </div>
-                            <h3 class="heading-font font-black text-2xl text-ink dark:text-slate-100">ROPENSOFT Utilities</h3>
-                            <p class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed">
-                                thats just my opensource software house which is under development rn
-                            </p>
-                        </div>
-                        <div class="pt-2 border-t-2 border-slate-300 dark:border-slate-700 flex flex-wrap gap-2">
-                            <span class="stat-badge bg-white dark:bg-slate-900 text-ink dark:text-slate-100 text-xs px-2.5 py-1 rounded-lg">Linux Tools</span>
-                            <span class="stat-badge bg-white dark:bg-slate-900 text-ink dark:text-slate-100 text-xs px-2.5 py-1 rounded-lg">Automation</span>
-                        </div>
-                    </div>
-
-                </div>
-
-            </section>
-
-            <!-- ================= TAB 4: INTERESTS ================= -->
-            <section id="stuff" class="tab-content space-y-6" role="tabpanel" aria-labelledby="tab-btn-stuff">
-                
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                    <div>
-                    
-                        <p class="section-kicker text-slate-600 dark:text-slate-400 mb-1">
-                            <i data-lucide="heart" class="w-4 h-4"></i> Things I'm Passionate About
-                        </p>
-<br>
-                        <h2 class="heading-font text-2xl sm:text-3xl font-black text-ink bg-popYellow px-5 py-2 toon-box toon-box-static inline-block">
-                            A List of my Interests
-                        </h2>
-                    </div>
-                  </div>
-
-                <!-- Balanced 2-Column Grid (Static Informational Interest Cards) -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-                    <!-- 1. GameDev -->
-                    <div class="toon-box toon-box-static interest-card bg-rose-50 dark:bg-slate-800 p-5 flex items-start gap-4">
-                        <div class="icon-badge bg-popPink text-white w-14 h-14 p-3 flex items-center justify-center shrink-0">
-                            <i data-lucide="gamepad-2" class="w-7 h-7 shrink-0" aria-hidden="true"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="heading-font font-black text-xl text-ink dark:text-slate-100">GameDev</h3>
-                            <p class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed">
-                                My Favourite thing to do when im bored. Presenting your ideas an Interactive World.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 3. Robotics -->
-                    <div class="toon-box toon-box-static interest-card bg-emerald-50 dark:bg-slate-800 p-5 flex items-start gap-4">
-                        <div class="icon-badge bg-popGreen text-ink w-14 h-14 p-3 flex items-center justify-center shrink-0">
-                            <i data-lucide="bot" class="w-7 h-7 shrink-0" aria-hidden="true"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="heading-font font-black text-xl text-ink dark:text-slate-100">Mechatronics / Robotics</h3>
-                            <p class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed">
-                                It has been part of me since Childhood so yeah, i am interestedin things  taht involve Code, Logic, and something you can tweak without owrrying abt outcomes.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 4. Tech Exploration -->
-                    <div class="toon-box toon-box-static interest-card bg-sky-50 dark:bg-slate-800 p-5 flex items-start gap-4">
-                        <div class="icon-badge bg-popCyan text-ink w-14 h-14 p-3 flex items-center justify-center shrink-0">
-                            <i data-lucide="code-2" class="w-7 h-7 shrink-0" aria-hidden="true"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="heading-font font-black text-xl text-ink dark:text-slate-100">Tech Exploration</h3>
-                            <p class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed">
-                                Super curious abt upcoming technologies, systems, and overall tech based evolutions.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 5. Reading -->
-                    <div class="toon-box toon-box-static interest-card bg-orange-50 dark:bg-slate-800 p-5 flex items-start gap-4">
-                        <div class="icon-badge bg-popOrange text-white w-14 h-14 p-3 flex items-center justify-center shrink-0">
-                            <i data-lucide="book-open" class="w-7 h-7 shrink-0" aria-hidden="true"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="heading-font font-black text-xl text-ink dark:text-slate-100">Reading</h3>
-                            <p class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed">
-                                I read books when im feeling motivated, (*thats why you will see me RARELY with books)
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 6. Cars -->
-                    <div class="toon-box toon-box-static interest-card bg-amber-50 dark:bg-slate-800 p-5 flex items-start gap-4">
-                        <div class="icon-badge bg-amber-400 text-ink w-14 h-14 p-3 flex items-center justify-center shrink-0">
-                            <i data-lucide="car-front" class="w-7 h-7 shrink-0" aria-hidden="true"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="heading-font font-black text-xl text-ink dark:text-slate-100">Car Enthusiast</h3>
-                            <p class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed">
-                                tbh, im more into Audis but im a car enthusiast fs ;)
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Full-Width Space & Theories Banner (Static Informational Box) -->
-                <div class="toon-box toon-box-static bg-popYellow p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-4">
-                    <div class="flex items-center gap-4">
-                        <div class="icon-badge bg-white text-ink w-14 h-14 p-3 flex items-center justify-center shrink-0">
-                            <i data-lucide="orbit" class="w-7 h-7 shrink-0" aria-hidden="true"></i>
-                        </div>
-                        <div class="space-y-0.5">
-                            <h3 class="heading-font font-black text-2xl text-ink">Space & Theories</h3>
-                            <p class="text-xs sm:text-sm font-extrabold text-slate-900">
-                                space is a thing that im curious abt the most like how far can we really go from a pivot point, lets say Earth...
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2 handwriting text-2xl text-ink bg-white px-4 py-1.5 toon-box toon-box-static shrink-0 self-end sm:self-auto font-bold">
-                        <i data-lucide="eye" class="w-5 h-5 shrink-0" aria-hidden="true"></i>
-                        idk why i made this....
-                    </div>
-                </div>
-
-            </section>
-
-            <!-- ================= TAB 5: LINKS ================= -->
-            <section id="links" class="tab-content space-y-6" role="tabpanel" aria-labelledby="tab-btn-links">
-                
-                <div class="toon-box toon-box-static bg-white dark:bg-slate-800 p-6 md:p-8 space-y-6">
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b-3 border-slate-200 dark:border-slate-700 pb-4">
-                        <div>
-                            <p class="section-kicker text-slate-600 dark:text-slate-400 mb-1">
-                                <i data-lucide="radio-tower" class="w-4 h-4"></i> Around The Internet
-                            </p>
-                            <h2 class="heading-font text-2xl sm:text-3xl font-black text-ink dark:text-slate-100">
-                                Some of my Social Accounts
-                            </h2>
-                        </div>
-                          </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        
-                        <!-- 1. Instagram (Interactive Action Link) -->
-                        <a href="https://instagram.com/_rayyanamer" target="_blank" rel="noopener noreferrer" class="toon-btn social-card bg-pink-100 dark:bg-slate-900 p-4 text-ink dark:text-slate-100 flex items-center justify-between hover:bg-pink-200 dark:hover:bg-slate-700">
-                            <div class="flex items-center gap-3">
-                                <div class="icon-badge bg-popPink text-white w-11 h-11 p-2.5 flex items-center justify-center shrink-0">
-                                    <img src="https://cdn.simpleicons.org/instagram/ffffff" class="w-5 h-5 shrink-0" alt="" aria-hidden="true">
-                                </div>
-                                <span class="font-extrabold text-base sm:text-lg">Instagram</span>
-                            </div>
-                            <i data-lucide="arrow-up-right" class="w-5 h-5 shrink-0" aria-hidden="true"></i>
-                        </a>
-
-                        <!-- 2. Discord (Interactive Action Link) -->
-                        <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="toon-btn social-card bg-purple-100 dark:bg-slate-900 p-4 text-ink dark:text-slate-100 flex items-center justify-between hover:bg-purple-200 dark:hover:bg-slate-700">
-                            <div class="flex items-center gap-3">
-                                <div class="icon-badge bg-popPurple text-white w-11 h-11 p-2.5 flex items-center justify-center shrink-0">
-                                    <img src="https://cdn.simpleicons.org/discord/ffffff" class="w-5 h-5 shrink-0" alt="" aria-hidden="true">
-                                </div>
-                                <span class="font-extrabold text-base sm:text-lg">Discord</span>
-                            </div>
-                            <i data-lucide="arrow-up-right" class="w-5 h-5 shrink-0" aria-hidden="true"></i>
-                        </a>
-
-                        <!-- 3. Itch.io (Interactive Action Link) -->
-                        <a href="https://rayyanamer.itch.io" target="_blank" rel="noopener noreferrer" class="toon-btn social-card bg-red-100 dark:bg-slate-900 p-4 text-ink dark:text-slate-100 flex items-center justify-between hover:bg-red-200 dark:hover:bg-slate-700">
-                            <div class="flex items-center gap-3">
-                                <div class="icon-badge bg-rose-500 text-white w-11 h-11 p-2 flex items-center justify-center shrink-0">
-                                    <img src="https://cdn.simpleicons.org/itchdotio/ffffff" class="w-6 h-6 shrink-0" alt="" aria-hidden="true">
-                                </div>
-                                <span class="font-extrabold text-base sm:text-lg">Itch.io</span>
-                            </div>
-                            <i data-lucide="arrow-up-right" class="w-5 h-5 shrink-0" aria-hidden="true"></i>
-                        </a>
-
-                        <!-- 4. GitHub (Interactive Action Link) -->
-                        <a href="https://github.com/rayyanamer" target="_blank" rel="noopener noreferrer" class="toon-btn social-card bg-emerald-100 dark:bg-slate-900 p-4 text-ink dark:text-slate-100 flex items-center justify-between hover:bg-emerald-200 dark:hover:bg-slate-700">
-                            <div class="flex items-center gap-3">
-                                <div class="icon-badge bg-popGreen text-ink w-11 h-11 p-2.5 flex items-center justify-center shrink-0">
-                                    <img src="https://cdn.simpleicons.org/github/0F172A" class="github-icon-img w-5 h-5 shrink-0" alt="" aria-hidden="true">
-                                </div>
-                                <span class="font-extrabold text-base sm:text-lg">GitHub</span>
-                            </div>
-                            <i data-lucide="arrow-up-right" class="w-5 h-5 shrink-0" aria-hidden="true"></i>
-                        </a>
-
-                        <!-- 5. Email Card (Interactive Action Link) -->
-                        <div onclick="copyEmail()" class="toon-box toon-box-interactive bg-amber-100 dark:bg-slate-900 text-ink dark:text-slate-100 p-4 flex items-center justify-between">
-                            <div class="flex items-center gap-3 min-w-0 pr-2">
-                                <div class="icon-badge bg-popOrange text-white w-11 h-11 p-2.5 flex items-center justify-center shrink-0">
-                                    <i data-lucide="mail" class="w-5 h-5 shrink-0" aria-hidden="true"></i>
-                                </div>
-                                <a href="mailto:muhammad.rayyanamer@gmail.com" onclick="event.stopPropagation();" class="font-extrabold text-xs sm:text-sm hover:underline truncate">
-                                    muhammad.rayyan.amer@gmail.com
-                                </a>
-                            </div>
-                            <i data-lucide="copy" class="w-5 h-5 shrink-0" title="Click to copy email" aria-hidden="true"></i>
-                        </div>
-
-                        <!-- 6. YouTube (Interactive Action Link) -->
-                        <a href="https://youtube.com/@RayyanAmerOG" target="_blank" rel="noopener noreferrer" class="toon-btn social-card bg-orange-100 dark:bg-slate-900 p-4 text-ink dark:text-slate-100 flex items-center justify-between hover:bg-orange-200 dark:hover:bg-slate-700">
-                            <div class="flex items-center gap-3">
-                                <div class="icon-badge bg-red-600 text-white w-11 h-11 p-2.5 flex items-center justify-center shrink-0">
-                                    <img src="https://cdn.simpleicons.org/youtube/ffffff" class="w-5 h-5 shrink-0" alt="" aria-hidden="true">
-                                </div>
-                                <span class="font-extrabold text-base sm:text-lg">YouTube</span>
-                            </div>
-                            <i data-lucide="arrow-up-right" class="w-5 h-5 shrink-0" aria-hidden="true"></i>
-                        </a>
-
-                    </div>
-                </div>
-
-            </section>
-
-        </main>
-
-        <!-- Footer -->
-        <footer class="text-center pt-2 pb-6">
-            <div class="inline-flex items-center gap-2 bg-white/90 dark:bg-slate-800/90 border-2 border-ink rounded-full px-4 py-2 shadow-[3px_3px_0px_#0F172A]">
-                <i data-lucide="code-2" class="w-4 h-4" aria-hidden="true"></i>
-                <p class="handwriting text-2xl text-slate-800 dark:text-slate-200 font-bold">Built by Rayyan</p>
-                <i data-lucide="sparkles" class="w-4 h-4" aria-hidden="true"></i>
+            <div class="tech-tags">
+              <span class="tag-pill">Godot 4.7</span>
+              <span class="tag-pill">GDScript</span>
+              <span class="tag-pill">Stylized PSX</span>
             </div>
-        </footer>
+            <p class="project-desc">
+              A 3D Procedurally generated Environent based Sandbox Game with Adventure and Survival Elements.
+  </p>
+          </li>
 
-    </div>
+          <li class="project-card">
+            <div class="project-header">
+              <span class="project-title">
+                <a href="https://lookatmywebpage.netlify.app" target="_blank" rel="noopener">Array404</a>
+              </span>
+              <span class="project-status">✦ Prototype</span>
+            </div>
+            <div class="tech-tags">
+              <span class="tag-pill">Godot 3D</span>
+              <span class="tag-pill">ATV Physics</span>
+              <span class="tag-pill">Radio Relay Grid</span>
+            </div>
+            <p class="project-desc">
+              Atmospheric signal tower observation game. Features continuous open terrain driving, raycast ATV physics, and interactive radio relay antenna arrays.
+            </p>
+          </li>
 
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        // Render Icons
-        lucide.createIcons();
+          <li class="project-card">
+            <div class="project-header">
+              <span class="project-title">
+                <a href="https://lookatmywebpage.netlify.app" target="_blank" rel="noopener">Artenag</a>
+              </span>
+              <span class="project-status">◈ Released</span>
+            </div>
+            <div class="tech-tags">
+              <span class="tag-pill">First-Person</span>
+              <span class="tag-pill">Rigidbody Physics</span>
+              <span class="tag-pill">WebAssembly</span>
+            </div>
+            <p class="project-desc">
+              First-person interaction engine highlighting momentum-based movement, physics-driven object inspection, and spatial 3D audio.
+            </p>
+          </li>
 
-        // Smooth Tab Navigation Controller
-        function switchTab(tabId, clickedBtn) {
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => {
-                content.classList.remove('active');
-            });
+          <li class="project-card">
+            <div class="project-header">
+              <span class="project-title">
+                <a href="https://lookatmywebpage.netlify.app" target="_blank" rel="noopener">Heightmap Generator</a>
+              </span>
+              <span class="project-status">◈ Web Tool</span>
+            </div>
+            <div class="tech-tags">
+              <span class="tag-pill">JavaScript</span>
+              <span class="tag-pill">Canvas API</span>
+              <span class="tag-pill">Perlin Noise</span>
+            </div>
+            <p class="project-desc">
+              Browser procedural map tool that renders multi-layered noise textures and exports RAW terrain heightmaps directly for game engine terrain nodes.
+            </p>
+          </li>
+        </ul>
+      </section>
 
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('active-tab');
-                btn.classList.add('opacity-80');
-                btn.setAttribute('aria-selected', 'false');
-            });
+      <!-- DEVLOG -->
+      <section>
+        <h2 class="section-title"><span class="title-sym">❯</span> DEVLOG &amp; NOTES</h2>
+        <ul class="log-list">
+          <li class="log-item">
+            <div class="log-meta">
+              <span class="meta-date">2026.01</span>
+              <span>•</span>
+              <span class="meta-tag">ESP-32</span>
+            </div>
+            <h3 class="log-title">
+              <a href="https://rayyanamer.github.io/esp32_based_quadcopter.html" target="_blank" rel="noopener">ESP32 Based Basic Flight Controller</a>
+            </h3>
+            <p class="log-summary">
+              A basic Quadcopter Flight Controller that i made for Science Expo at <strong>The Smart School Gojra</strong>.
+            </p>
+          </li>
 
-            const targetContent = document.getElementById(tabId);
-            if (targetContent) {
-                targetContent.classList.add('active');
-            }
+          <li class="log-item">
+            <div class="log-meta">
+              <span class="meta-date">2026.08</span>
+              <span>•</span>
+              <span class="meta-tag">SHADERS</span>
+            </div>
+            <h3 class="log-title">
+              <a href="https://lookatmywebpage.netlify.app" target="_blank" rel="noopener">Writing Custom Volumetric Fog Shaders</a>
+            </h3>
+            <p class="log-summary">
+              Wrote spatial fog shaders in GLSL to simulate atmospheric distance density and low-sun god rays without heavy post-processing overhead.
+            </p>
+          </li>
 
-            if (clickedBtn) {
-                clickedBtn.classList.add('active-tab');
-                clickedBtn.classList.remove('opacity-80');
-                clickedBtn.setAttribute('aria-selected', 'true');
-            }
-        }
+          <li class="log-item">
+            <div class="log-meta">
+              <span class="meta-date">2026.05</span>
+              <span>•</span>
+              <span class="meta-tag">PHYSICS</span>
+            </div>
+            <h3 class="log-title">
+              <a href="https://lookatmywebpage.netlify.app" target="_blank" rel="noopener">Suspension &amp; Traction Models in Array 404</a>
+            </h3>
+            <p class="log-summary">
+              Configured raycast spring forces for driveable vehicles traversing irregular terrain heightmaps for responsive off-road handling.
+            </p>
+          </li>
+        </ul>
+      </section>
 
-        // Email Quick Copy Utility
-        function copyEmail() {
-            const email = "muhammad.rayyanamer@gmail.com";
-            const el = document.createElement('textarea');
-            el.value = email;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
+      <!-- SOCIAL LINKS -->
+      <section>
+        <h2 class="section-title"><span class="title-sym">⁕</span> CONNECT</h2>
+        <div class="social-card">
+          <ul class="social-links">
+            <li>
+              <a href="https://github.com/rayyanamer" target="_blank" rel="noopener">
+                <span class="sym">❯</span> GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://rayyanamer.itch.io" target="_blank" rel="noopener">
+                <span class="sym">❯</span> Itch.io
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/rayyan-amer-b36035437?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">
+                <span class="sym">❯</span> LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="https://youtube.com/@RayyanAmerOG" target="_blank" rel="noopener">
+                <span class="sym">❯</span> YouTube
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/_rayyanamer" target="_blank" rel="noopener">
+                <span class="sym">❯</span> Instagram
+              </a>
+            </li>
+            <li>
+              <a href="mailto:muhammad.rayyan.amer@gmail.com">
+                <span class="sym">❯</span> Email
+              </a>
+            </li>
+          </ul>
+        </div>section>
+    </main>
 
-            const badge = document.createElement('div');
-            badge.className = 'fixed bottom-6 right-6 bg-popGreen text-ink heading-font font-black px-4 py-2 border-3 border-ink rounded-xl shadow-[4px_4px_0px_#0F172A] z-50 text-sm';
-            badge.innerText = 'Copied email to clipboard!';
-            document.body.appendChild(badge);
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-copyright">
+        <span>© 2026 Rayyan Amer</span>
+        <span class="footer-sep">•</span>
+        <span class="footer-note">All rights reserved</span>
+      </div>
+      <div class="footer-meta">
+        <span class="footer-note">Local Time</span>
+        <span class="footer-sep">·</span>
+        <span class="time-badge" id="live-time">PKT 00:00:00</span>
+      </div>
+    </footer>
+  </div>
 
-            setTimeout(() => {
-                badge.style.transition = 'opacity 0.3s ease';
-                badge.style.opacity = '0';
-                setTimeout(() => badge.remove(), 300);
-            }, 2000);
-        }
-    </script>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const options = {
+        timeZone: 'Asia/Karachi',
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      };
+      const timeString = new Intl.DateTimeFormat('en-GB', options).format(now);
+      const timeElem = document.getElementById('live-time');
+      if (timeElem) {
+        timeElem.textContent = `PKT ${timeString}`;
+      }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
 </body>
 </html>
