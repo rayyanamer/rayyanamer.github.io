@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0c0e">
+<title>ESP32 Flight Controller — RYNx86</title>
+<meta name="description" content="The story behind our ESP32 quadcopter project for the Ibn Al-Haythem Science Mela, January 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0c0e;--surface:#14171d;--text:#d4d8e0;--heading:#f0f3f8;--muted:#8e96a4;--subtle:#4e5563;--border:#222731;--lime:#DDFFAF;--orange:#FF9F68;--mono:'JetBrains Mono',ui-monospace,monospace;--display:'Space Mono',var(--mono)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);background-image:radial-gradient(ellipse 80% 45% at 50% -10%,rgba(221,255,175,.045),transparent 70%),radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);background-size:100% 100%,24px 24px;background-position:0 0,12px 12px;color:var(--text);font: .92rem/1.95 var(--mono);padding:4.5rem 1.5rem;-webkit-font-smoothing:antialiased}
+a{color:var(--lime);text-decoration:none}a:hover{text-decoration:underline;text-underline-offset:4px}
+.container{max-width:720px;margin:auto}.nav{display:flex;justify-content:space-between;gap:1rem;padding-bottom:1.1rem;margin-bottom:4rem;border-bottom:1px solid var(--border);color:var(--muted);font-size:.75rem}.nav a{color:var(--muted)}.nav span{color:var(--orange)}
+header{margin-bottom:3.5rem}.date{color:var(--orange);font-size:.75rem;margin-bottom:1.1rem;letter-spacing:.04em}
+h1{color:var(--heading);font:700 clamp(1.9rem,5vw,2.65rem)/1.3 var(--display);letter-spacing:-.04em;margin-bottom:1rem}
+.subtitle{color:var(--muted);font-size:.88rem;max-width:590px;line-height:1.8}
+article{border-top:1px solid var(--border);padding-top:2.7rem}
+.section-symbol{display:inline-block;color:var(--orange);margin-right:.45rem;font-size:1rem;letter-spacing:0}
+h2{color:var(--lime);font:700 .82rem/1.6 var(--display);letter-spacing:.12em;text-transform:uppercase;margin:3.2rem 0 1.15rem}
+article h2:first-of-type{margin-top:3.2rem}
+p{margin:0 0 1.35rem;max-width:690px}
+ul{list-style:none;margin:1.1rem 0 1.8rem 0;padding:0 0 0 1.25rem;display:grid;gap:.65rem}
+li{position:relative;padding-left:.85rem;line-height:1.75}
+li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;background:var(--lime);border-radius:1px}
+article p + ul{margin-top:.25rem}
+.note{color:var(--muted);font-size:.8rem}
+footer{margin-top:4.5rem;padding-top:1.35rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.7rem;color:var(--muted);font-size:.72rem}
+footer span:last-child{color:var(--lime)}
+@media(max-width:520px){body{padding:2.5rem 1.15rem}.nav{margin-bottom:3rem}header{margin-bottom:2.7rem}article{padding-top:2rem}h2{margin-top:2.8rem}p{margin-bottom:1.2rem}}
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="nav">
+<a href="https://lookatmywebpage.netlify.app"><span>‹</span> RYNx86</a>
+
+</nav>
+<header>
+<h1>ESP32 Based Flight Controller</h1>
+<p class="subtitle">The story of our attempt to build an ESP32-based quadcopter for our school science expo.</p>
+</header>
+<article>
+<p>
+  Our school announced the Ibn Al Haythem Science Mela, and every student had
+  to make a project. I was leading a small team, and our Physics Professor
+  gave us a few ideas to choose from. One of them was a quadcopter.
+</p>
+
+<p>
+  I picked it because it sounded fun. I wanted to build something that mixed
+  electronics with programming, and making our own flight controller seemed
+  like a good challenge.
+</p>
+
+<h2><span class="section-symbol">⌁</span> Getting started</h2>
+<p>These were the main parts we were given:</p>
+<ul>
+  <li>ESP32</li>
+  <li>MPU6050 sensors</li>
+  <li>DRV8833 motor drivers</li>
+  <li>LEDs</li>
+  <li>Coreless motors and propellers</li>
+  <li>3.7V 450mAh battery</li>
+</ul>
+
+<p>
+  I took care of the coding, circuit connections and firmware. The rest of
+  the team worked on the frame, body and wiring. We split the work and got
+  started.
+</p>
+
+<h2><span class="section-symbol">⌖</span> Where it went wrong</h2>
+<p>
+  After almost a week, the controller was responding to the gyroscope.
+  That part was working. The problem showed up when we increased the throttle
+  past around 60%. The voltage dropped, and the whole system restarted.
+</p>
+
+<p>We thought a few things might be causing it:</p>
+<ul>
+  <li>Too much weight</li>
+  <li>The battery not supplying enough current</li>
+  <li>An issue somewhere in the circuit or connections</li>
+</ul>
+
+<p>
+  We had just one day left before the expo. We could not find a reliable fix
+  in time, so we decided to pause the quadcopter and prepare another project.
+</p>
+
+<h2><span class="section-symbol">↳</span> A change of plan</h2>
+<p>
+  That night, I worked on a smart home security system. The idea was to let it
+  connect and sync with other smart home devices. Think of it as a Siri for
+  the house.
+</p>
+
+<p>
+  We took that project to the event instead. The quadcopter never got to fly,
+  but we did have a working demonstration of its controller.
+</p>
+
+<h2><span class="section-symbol">✳</span> What I would do differently</h2>
+<p>
+  Looking back, the quadcopter did not have to fly for us to show what we had
+  built. We could have demonstrated the controller, the sensor readings and
+  how the software responded to the gyroscope.
+</p>
+
+<p>
+  We could also have explained how the ESP32 and sensors would help keep the
+  quadcopter balanced in the air. That would have shown the main idea without
+  needing a successful takeoff.
+</p>
+
+<p>
+  The project did not go as planned, but the experience was worth it. It
+  showed me how one small power issue can affect an entire system, even when
+  other parts are working.
+</p>
+
+<h2><span class="section-symbol">◈</span> The event</h2>
+<ul>
+  <li><strong>Event:</strong> Ibn Al Haythem Science Mela</li>
+  <li><strong>Venue:</strong> The Smart School Gojra</li>
+  <li><strong>Date:</strong> 31 January 2026</li>
+</ul>
+<p>
+  <a href="https://www.youtube.com/live/bikPTh0ERQ0?si=uCyhtpPLV-iaXoEc"
+     target="_blank" rel="noopener">↗ Watch the event on YouTube</a>
+</p>
+</article>
+<footer>
+<span>© 2026 Rayyan Amer · RYNx86</span>
+<span>ESP32 · PROJECT LOG</span>
+</footer>
+</div>
+</body>
+</html>
