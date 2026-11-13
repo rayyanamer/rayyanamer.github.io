@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superior Allama Iqbal Science College Gojra | SAISC</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Lora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ivory: {
+                            50: '#FFFFFF',
+                            100: '#FAF9F6',
+                            200: '#F3F1EC',
+                            300: '#E6E2D8'
+                        },
+                        emerald: {
+                            950: '#022C22',
+                            900: '#064E3B',
+                            800: '#065F46',
+                            700: '#047857',
+                            600: '#059669',
+                            100: '#D1FAE5',
+                            50: '#ECFDF5'
+                        },
+                        champagne: {
+                            700: '#92400E',
+                            600: '#B45309',
+                            500: '#D97706',
+                            200: '#FDE68A',
+                            100: '#FEF3C7',
+                            50: '#FFFBEB'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Lora', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --fluid-h1: clamp(2.35rem, 5vw + 1rem, 4.5rem);
+            --fluid-h2: clamp(1.85rem, 3.2vw + 0.75rem, 3rem);
+            --fluid-h3: clamp(1.25rem, 1.5vw + 0.5rem, 1.65rem);
+            --fluid-lead: clamp(1.05rem, 1.1vw + 0.65rem, 1.25rem);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF9F6;
+            color: #0F172A;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'Lora', serif;
+        }
+
+        .hero-title {
+            font-size: var(--fluid-h1);
+            line-height: 1.08;
+            letter-spacing: -0.025em;
+        }
+
+        .section-title {
+            font-size: var(--fluid-h2);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .lead-copy {
+            font-size: var(--fluid-lead);
+            line-height: 1.65;
+        }
+
+        /* Frosted Glass Navbar */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.86);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(6, 78, 59, 0.08);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-glass.scrolled {
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 12px 32px -8px rgba(6, 78, 59, 0.1);
+            border-bottom: 1px solid rgba(6, 78, 59, 0.14);
+        }
+
+        /* Animated Burger Icon */
+        .burger-line {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #064E3B;
+            border-radius: 2px;
+            transition: transform 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.25s ease, width 0.3s ease;
+        }
+
+        .burger-open .burger-line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .burger-open .burger-line:nth-child(2) {
+            opacity: 0;
+            width: 0;
+        }
+
+        .burger-open .burger-line:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Slide Over Drawer */
+        .drawer-backdrop {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+
+        .drawer-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .drawer-panel {
+            transform: translateX(100%);
+            transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .drawer-panel.open {
+            transform: translateX(0);
+        }
+
+        .drawer-link {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.35s ease, transform 0.35s ease, color 0.2s ease;
+        }
+
+        .drawer-panel.open .drawer-link {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Typewriter Cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.05em;
+            background-color: #B45309;
+            margin-left: 4px;
+            vertical-align: text-bottom;
+            animation: blinkCursor 0.85s infinite;
+        }
+
+        @keyframes blinkCursor {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ambient Light Orbs */
+        .hero-orb {
+            background: radial-gradient(circle, rgba(5, 150, 105, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+        }
+
+        .gold-orb {
+            background: radial-gradient(circle, rgba(217, 119, 6, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+        }
+
+        /* Card Elevation */
+        .academic-card {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+        }
+
+        .academic-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -14px rgba(6, 78, 59, 0.11);
+            border-color: rgba(4, 120, 87, 0.32);
+        }
+
+        /* Smooth Fade Transitions */
+        .fade-panel {
+            animation: smoothFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes smoothFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom Dropdown Menu */
+        .custom-dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px) scale(0.98);
+            transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
+        }
+
+        .custom-dropdown-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Auto Scrolling Horizontal Gallery */
+        .gallery-viewport {
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: horizontalMarquee 38s linear infinite;
+        }
+
+        .gallery-viewport:hover .gallery-track,
+        .gallery-track.paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes horizontalMarquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    
+        /* Simple opening disclaimer */
+        .disclaimer-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            background: rgba(2, 44, 34, 0.48);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        .disclaimer-overlay.dismissed {
+            display: none;
+        }
+        .disclaimer-card {
+            width: 100%;
+            max-width: 390px;
+            padding: 2rem;
+            background: #fff;
+            border: 1px solid rgba(6, 78, 59, 0.12);
+            border-radius: 1.25rem;
+            box-shadow: 0 24px 70px rgba(2, 44, 34, 0.2);
+        }
+
+    </style>
+</head>
+<body class="antialiased selection:bg-emerald-900 selection:text-white">
+
+    <!-- Opening Disclaimer -->
+    <div id="disclaimer" class="disclaimer-overlay" role="dialog" aria-modal="true" aria-labelledby="disclaimer-title">
+        <div class="disclaimer-card">
+            <h2 id="disclaimer-title" class="text-xl font-bold text-emerald-950">A Quick Note</h2>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                This website is complete. Please ignore any issues you may notice.
+            </p>
+            <p class="mt-5 text-sm font-semibold text-emerald-900">Regards,<br>Rayyan :)</p>
+            <button type="button" id="disclaimer-proceed"
+                class="mt-7 w-full rounded-xl bg-emerald-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-emerald-800">
+                Proceed
+            </button>
+        </div>
+    </div>
+
+
+
+    <!-- Confirmation Notification Toast -->
+    <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-400 bg-emerald-900 text-white px-6 py-4 rounded-2xl shadow-2xl border border-emerald-700 flex items-center gap-3.5 max-w-md">
+        <div class="w-9 h-9 rounded-xl bg-champagne-500/20 text-champagne-200 flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-circle-check text-lg"></i>
+        </div>
+        <div>
+            <p class="text-xs uppercase tracking-wider text-emerald-200 font-semibold">SAISC Admissions Office</p>
+            <p id="toast-message" class="text-sm font-medium text-white mt-0.5">Your inquiry has been received.</p>
+        </div>
+    </div>
+
+    <!-- Fullscreen Lightbox Modal for Merit Poster & Gallery Inspection -->
+    <div id="poster-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" class="fixed inset-0 z-50 hidden bg-emerald-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8">
+        <div class="relative w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-emerald-900/20 flex flex-col max-h-[92vh]">
+            <div class="flex items-center justify-between px-6 py-4 bg-ivory-100 border-b border-ivory-300">
+                <div>
+                    <span id="lightbox-badge" class="text-xs font-bold uppercase tracking-widest text-champagne-700">Institutional Record</span>
+                    <h3 id="lightbox-title" class="text-lg font-extrabold text-emerald-950">Annual University Placement Record</h3>
+                </div>
+                <button type="button" onclick="closePosterLightbox()" aria-label="Close Preview" class="w-10 h-10 rounded-xl bg-white border border-emerald-900/15 text-emerald-950 hover:bg-emerald-900 hover:text-white flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div id="lightbox-body" class="p-6 overflow-y-auto flex-1 flex items-center justify-center bg-ivory-200/50">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Bar -->
+    <header id="navbar" class="nav-glass sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 lg:h-24">
+                
+                <!-- Institutional Crest & Brand Identity -->
+                <a href="#top" class="flex items-center gap-3.5 group focus:outline-none">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-700 text-white flex items-center justify-center shadow-lg shadow-emerald-900/20 group-hover:scale-105 transition-transform duration-300 border border-emerald-600/30">
+                        <i class="fa-solid fa-graduation-cap text-xl text-champagne-200"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl font-extrabold tracking-tight text-emerald-950">SAISC</span>
+                            <span class="text-[11px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-champagne-100 text-champagne-700 border border-champagne-200">Gojra</span>
+                        </div>
+                        <span class="text-xs font-medium text-slate-600 tracking-tight hidden sm:block">Superior Allama Iqbal Science College</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav aria-label="Primary Navigation" class="hidden lg:flex items-center gap-1 bg-ivory-200/70 p-1.5 rounded-2xl border border-emerald-900/5">
+                    <a href="#philosophy" class="nav-link px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-900 hover:bg-white/80 transition-all">Philosophy</a>
+                    <a href="#programs" class="nav-link px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-900 hover:bg-white/80 transition-all">Programs</a>
+                    <a href="#excellence" class="nav-link px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-900 hover:bg-white/80 transition-all">Proof of Excellence</a>
+                    <a href="#gallery" class="nav-link px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-900 hover:bg-white/80 transition-all">Gallery</a>
+                    <a href="#campus" class="nav-link px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-900 hover:bg-white/80 transition-all">Facilities</a>
+                    <a href="#leadership" class="nav-link px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-900 hover:bg-white/80 transition-all">Faculty</a>
+                    <a href="#admissions" class="nav-link px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-900 hover:bg-white/80 transition-all">Admissions</a>
+                </nav>
+
+                <!-- Desktop Action CTA & Animated Burger Trigger -->
+                <div class="flex items-center gap-3">
+                    <a href="#admissions" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-900 text-white text-sm font-semibold hover:bg-emerald-800 transition-all shadow-md shadow-emerald-900/15">
+                        <span>Apply for Admission</span>
+                        <i class="fa-solid fa-arrow-right text-xs text-champagne-200"></i>
+                    </a>
+
+                    <!-- Animated Burger Menu Button -->
+                    <button id="burger-btn" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-drawer" class="lg:hidden w-12 h-12 rounded-2xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-900/10 flex flex-col items-center justify-center gap-[5px] transition-colors focus:outline-none">
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Slide Over Mobile & Tablet Navigation Drawer -->
+    <div id="drawer-backdrop" class="drawer-backdrop fixed inset-0 z-50 bg-emerald-950/40 backdrop-blur-sm lg:hidden">
+        <aside id="mobile-drawer" aria-label="Mobile Navigation" class="drawer-panel fixed top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl border-l border-emerald-900/10 flex flex-col justify-between p-6 sm:p-8 overflow-y-auto">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-ivory-300">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-900 text-champagne-200 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <p class="text-base font-extrabold text-emerald-950">SAISC Gojra</p>
+                            <p class="text-xs text-slate-500">Intermediate Science College</p>
+                        </div>
+                    </div>
+                    <button id="drawer-close-btn" aria-label="Close Menu" class="w-10 h-10 rounded-xl bg-ivory-200 text-emerald-950 hover:bg-emerald-900 hover:text-white flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <nav class="mt-8 flex flex-col gap-2">
+                    <a href="#philosophy" style="transition-delay: 45ms;" class="drawer-link flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-bold text-slate-800 hover:bg-emerald-50 hover:text-emerald-900">
+                        <span>Academic Philosophy</span>
+                        <i class="fa-solid fa-chevron-right text-xs text-emerald-700"></i>
+                    </a>
+                    <a href="#programs" style="transition-delay: 85ms;" class="drawer-link flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-bold text-slate-800 hover:bg-emerald-50 hover:text-emerald-900">
+                        <span>Intermediate Programs</span>
+                        <i class="fa-solid fa-chevron-right text-xs text-emerald-700"></i>
+                    </a>
+                    <a href="#excellence" style="transition-delay: 125ms;" class="drawer-link flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-bold text-slate-800 hover:bg-emerald-50 hover:text-emerald-900">
+                        <span>Proof of Excellence</span>
+                        <i class="fa-solid fa-chevron-right text-xs text-emerald-700"></i>
+                    </a>
+                    <a href="#gallery" style="transition-delay: 165ms;" class="drawer-link flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-bold text-slate-800 hover:bg-emerald-50 hover:text-emerald-900">
+                        <span>Campus Gallery</span>
+                        <i class="fa-solid fa-chevron-right text-xs text-emerald-700"></i>
+                    </a>
+                    <a href="#campus" style="transition-delay: 205ms;" class="drawer-link flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-bold text-slate-800 hover:bg-emerald-50 hover:text-emerald-900">
+                        <span>Campus Facilities</span>
+                        <i class="fa-solid fa-chevron-right text-xs text-emerald-700"></i>
+                    </a>
+                    <a href="#leadership" style="transition-delay: 245ms;" class="drawer-link flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-bold text-slate-800 hover:bg-emerald-50 hover:text-emerald-900">
+                        <span>Principals & Faculty</span>
+                        <i class="fa-solid fa-chevron-right text-xs text-emerald-700"></i>
+                    </a>
+                    <a href="#admissions" style="transition-delay: 285ms;" class="drawer-link flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-bold text-slate-800 hover:bg-emerald-50 hover:text-emerald-900">
+                        <span>Admissions Office</span>
+                        <i class="fa-solid fa-chevron-right text-xs text-emerald-700"></i>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-ivory-300 space-y-4">
+                <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-900/10">
+                    <p class="text-xs font-bold uppercase tracking-wider text-emerald-800 mb-1">Campus Locations</p>
+                    <p class="text-xs text-slate-700 font-medium leading-relaxed">Boys Campus: Main Hafeez Park Road, Gojra<br>Girls Campus: Tehsil Office Road, Gojra</p>
+                </div>
+                <a href="#admissions" class="drawer-cta w-full py-3.5 rounded-2xl bg-emerald-900 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/20">
+                    <span>Submit Admission Inquiry</span>
+                    <i class="fa-solid fa-arrow-right text-xs text-champagne-200"></i>
+                </a>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="top" class="relative overflow-hidden bg-white pt-16 pb-20 lg:pt-24 lg:pb-32 border-b border-ivory-300">
+        <div class="hero-orb absolute -top-24 -left-24 w-[32rem] h-[32rem] rounded-full pointer-events-none"></div>
+        <div class="gold-orb absolute top-20 right-0 w-[28rem] h-[28rem] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+                
+                <!-- Left Content Column (7 cols) -->
+                <div class="lg:col-span-7 space-y-7">
+                    <p class="text-xs sm:text-sm font-extrabold uppercase tracking-[0.18em] text-champagne-700">
+                        Superior Allama Iqbal Science College Gojra
+                    </p>
+
+                    <h1 class="hero-title font-extrabold text-emerald-950">
+                        Structured Education for
+                        <span class="block font-display italic font-semibold text-emerald-800 mt-1">
+                            <span id="typewriter-text">Intermediate Scholars</span><span class="typewriter-cursor" aria-hidden="true"></span>
+                        </span>
+                    </h1>
+
+                    <p class="lead-copy text-slate-600 max-w-2xl font-normal">
+                        A student's academic direction relies on these two intermediate years. At SAISC Gojra, instruction is centered on regular classes, concept clarity, and consistent evaluation within a disciplined campus setting.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="#admissions" class="px-8 py-4 rounded-2xl bg-emerald-900 text-white font-bold text-sm sm:text-base hover:bg-emerald-800 transition-all shadow-lg shadow-emerald-900/15 inline-flex items-center gap-3">
+                            <span>Admission Information</span>
+                            <i class="fa-solid fa-arrow-right text-champagne-200"></i>
+                        </a>
+                        <a href="#excellence" class="px-8 py-4 rounded-2xl bg-ivory-100 text-emerald-950 font-bold text-sm sm:text-base border border-emerald-900/15 hover:bg-emerald-50 transition-all inline-flex items-center gap-2.5">
+                            <i class="fa-solid fa-award text-champagne-600"></i>
+                            <span>Proof of Excellence</span>
+                        </a>
+                    </div>
+
+                    <!-- Institutional Benchmarks Strip -->
+                    <div class="pt-6 border-t border-ivory-300 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-emerald-900"><span class="counter" data-target="500">0</span>+</p>
+                            <p class="text-xs font-semibold text-slate-600 mt-1">High Achievers</p>
+                        </div>
+                        <div>
+                            <p class="text-xl sm:text-2xl font-extrabold text-emerald-900 leading-tight">Highest Batch Average</p>
+                            <p class="text-xs font-semibold text-slate-600 mt-1">In Gojra</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-emerald-900"><span class="counter" data-target="3">0</span></p>
+                            <p class="text-xs font-semibold text-slate-600 mt-1">Teaching Principals</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Institutional Overview Card (5 cols) -->
+                <div class="lg:col-span-5">
+                    <div class="relative bg-ivory-100 rounded-3xl p-7 sm:p-9 border border-emerald-900/10 shadow-xl shadow-emerald-950/5">
+                        <div class="flex items-center justify-between pb-5 border-b border-ivory-300">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-widest text-champagne-600">Academic Approach</span>
+                                <h2 class="text-xl font-bold text-emerald-950 mt-1">Focus on Critical Years</h2>
+                            </div>
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-900 text-champagne-200 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 space-y-5">
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Intermediate classes lay the foundation for medical, engineering, and computing entrance examinations as well as board results.
+                            </p>
+
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-emerald-900/5">
+                                    <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-bullseye text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-sm font-bold text-emerald-950">Regular Academic Schedule</h3>
+                                        <p class="text-xs text-slate-500 mt-0.5">Daily lectures, structured test series, and syllabus completion ahead of board exams.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-emerald-900/5">
+                                    <div class="w-8 h-8 rounded-xl bg-champagne-50 text-champagne-600 flex items-center justify-center shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-chalkboard-user text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-sm font-bold text-emerald-950">Classroom Instruction by Principals</h3>
+                                        <p class="text-xs text-slate-500 mt-0.5">All three principals teach core intermediate subjects directly in class.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-emerald-900/5">
+                                    <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-graduation-cap text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-sm font-bold text-emerald-950">University Preparation</h3>
+                                        <p class="text-xs text-slate-500 mt-0.5">Steady track record of admissions into public medical, engineering, and IT universities.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Primary Academic Philosophy Banner -->
+    <section id="philosophy" class="py-20 lg:py-24 bg-emerald-950 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-10 items-center reveal">
+                <div class="lg:col-span-5">
+                    <span class="inline-block px-3.5 py-1.5 rounded-full bg-white/10 text-champagne-200 text-xs font-bold uppercase tracking-widest mb-4">
+                        Educational Focus
+                    </span>
+                    <h2 class="section-title font-display font-semibold text-white">
+                        Dedicated to Education & Academic Activities
+                    </h2>
+                </div>
+                <div class="lg:col-span-7 lg:pl-8 border-l-0 lg:border-l border-emerald-800 space-y-4">
+                    <p class="text-lg sm:text-xl text-emerald-100 leading-relaxed font-normal">
+                        A student's future depends heavily on these two intermediate years. Every timetable, test, and lecture at Superior Allama Iqbal Science College Gojra is planned around syllabus clarity, regular attendance, and steady academic progress.
+                    </p>
+                    <div class="flex flex-wrap gap-6 pt-2 text-sm text-champagne-200 font-semibold">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> Weekly Testing Schedule</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> Parent Progress Updates</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> Orderly Campus Routine</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intermediate Academic Programs -->
+    <section id="programs" class="py-24 lg:py-32 bg-ivory-100 border-b border-ivory-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-champagne-600">Intermediate Streams</span>
+                <h2 class="section-title font-extrabold text-emerald-950 mt-2">Intermediate Academic Programs</h2>
+                <p class="text-slate-600 mt-3 text-base sm:text-lg">
+                    Two year intermediate courses structured around board examination standards and foundational subject mastery.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Stream 1: FSc Pre Medical -->
+                <div class="academic-card bg-white rounded-3xl p-8 border border-emerald-900/15 shadow-sm flex flex-col justify-between reveal">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-champagne-700">Medical Sciences</span>
+                        <h3 class="text-2xl font-extrabold text-emerald-950 mt-1 mb-3">FSc Pre Medical</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Core instruction in Biology, Chemistry, and Physics for students preparing for medical and allied health sciences.
+                        </p>
+                        <ul class="space-y-3 text-sm text-slate-700 border-t border-ivory-300 pt-5 mb-8">
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-700"></i> <span>Biology, Chemistry & Physics syllabus coverage</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-700"></i> <span>Weekly chapter tests & board pattern papers</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-700"></i> <span>Guidance from experienced subject specialists</span></li>
+                        </ul>
+                    </div>
+                    <a href="#admissions" onclick="selectProgramFromCard('FSc Pre Medical')" class="w-full py-3.5 rounded-2xl bg-emerald-900 text-white font-bold text-sm hover:bg-emerald-800 transition-colors text-center">
+                        Inquire About FSc Pre Medical
+                    </a>
+                </div>
+
+                <!-- Stream 2: FSc Pre Engineering -->
+                <div class="academic-card bg-white rounded-3xl p-8 border border-emerald-900/15 shadow-sm flex flex-col justify-between reveal">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-compass-drafting"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-champagne-700">Engineering Sciences</span>
+                        <h3 class="text-2xl font-extrabold text-emerald-950 mt-1 mb-3">FSc Pre Engineering</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Core instruction in Mathematics, Physics, and Chemistry for students preparing for engineering and applied sciences.
+                        </p>
+                        <ul class="space-y-3 text-sm text-slate-700 border-t border-ivory-300 pt-5 mb-8">
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-700"></i> <span>Mathematics, Physics & Chemistry syllabus coverage</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-700"></i> <span>Weekly chapter tests & board pattern papers</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-700"></i> <span>Guidance from experienced subject specialists</span></li>
+                        </ul>
+                    </div>
+                    <a href="#admissions" onclick="selectProgramFromCard('FSc Pre Engineering')" class="w-full py-3.5 rounded-2xl bg-emerald-900 text-white font-bold text-sm hover:bg-emerald-800 transition-colors text-center">
+                        Inquire About FSc Pre Engineering
+                    </a>
+                </div>
+
+                <!-- Stream 3: ICS Computer Science -->
+                <div class="academic-card bg-white rounded-3xl p-8 border border-emerald-900/15 shadow-sm flex flex-col justify-between reveal">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-champagne-700">Computing Sciences</span>
+                        <h3 class="text-2xl font-extrabold text-emerald-950 mt-1 mb-3">ICS Computer Science</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Core instruction in Computer Science, Mathematics, and Physics for students preparing for computing and software fields.
+                        </p>
+                        <ul class="space-y-3 text-sm text-slate-700 border-t border-ivory-300 pt-5 mb-8">
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-700"></i> <span>Practical lab sessions on modern computer systems</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-700"></i> <span>Weekly chapter tests & board pattern papers</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-700"></i> <span>Guidance from experienced subject specialists</span></li>
+                        </ul>
+                    </div>
+                    <a href="#admissions" onclick="selectProgramFromCard('ICS Computer Science')" class="w-full py-3.5 rounded-2xl bg-emerald-900 text-white font-bold text-sm hover:bg-emerald-800 transition-colors text-center">
+                        Inquire About ICS Computer Science
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof of Excellence: Unified Official Annual Merit Sheet Display (No Categories) -->
+    <section id="excellence" class="py-24 lg:py-32 bg-white border-b border-ivory-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-14 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-champagne-600">Proof of Excellence</span>
+                <h2 class="section-title font-extrabold text-emerald-950 mt-2">
+                    University Placement & Annual Result Record
+                </h2>
+                <p class="text-slate-600 mt-3 text-base sm:text-lg">
+                    Our official college result sheet documenting SAISC Gojra graduates placed into public sector medical colleges, engineering universities, and computing programs.
+                </p>
+            </div>
+
+            <!-- Single Unified Poster Showcase -->
+            <div class="reveal">
+                <article class="bg-ivory-100 rounded-3xl overflow-hidden border border-emerald-900/15 shadow-sm">
+                    <div class="grid lg:grid-cols-12 items-stretch">
+                        <!-- Image Slot Column (7 cols) -->
+                        <div class="lg:col-span-7">
+                            <div onclick="openPosterLightbox()" role="button" tabindex="0" aria-label="Inspect Official Annual Merit Sheet" class="group relative h-full min-h-[340px] sm:min-h-[420px] bg-gradient-to-br from-emerald-950 via-emerald-900 to-emerald-800 flex flex-col items-center justify-center p-8 text-center cursor-pointer overflow-hidden">
+                                <!-- Replace posterImageSrc in script with your official scanned sheet image -->
+                                <div id="main-poster-slot" class="w-full h-full flex flex-col items-center justify-center">
+                                    <div class="w-16 h-16 rounded-2xl bg-white/10 border border-champagne-200/40 flex items-center justify-center text-champagne-200 text-2xl mb-4 group-hover:scale-105 transition-transform">
+                                        <i class="fa-solid fa-newspaper"></i>
+                                    </div>
+                                    <p class="text-lg sm:text-xl font-extrabold text-white max-w-md">Official Annual University Placement Poster</p>
+                                    <p class="text-xs sm:text-sm text-emerald-200 mt-2 max-w-md leading-relaxed">
+                                        Add your college result poster image file path in the script to display the complete printed sheet here.
+                                    </p>
+                                </div>
+
+                                <span class="absolute bottom-4 right-4 px-4 py-2 rounded-xl bg-white/95 text-emerald-950 text-xs font-bold shadow-md flex items-center gap-2 group-hover:bg-champagne-100 transition-colors">
+                                    <i class="fa-solid fa-magnifying-glass-plus text-emerald-800"></i>
+                                    <span>View Full Sheet</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Summary Details Column (5 cols) -->
+                        <div class="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between">
+                            <div class="space-y-5">
+                                <span class="inline-block px-3.5 py-1 rounded-full bg-champagne-100 text-champagne-700 text-xs font-bold uppercase tracking-wider">
+                                    Verified Institutional Record
+                                </span>
+                                <h3 class="text-2xl font-extrabold text-emerald-950 leading-snug">
+                                    Consistent University Placements Across Disciplines
+                                </h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">
+                                    Each academic session, SAISC Gojra publishes its complete record of board high achievers and university admissions across Punjab.
+                                </p>
+
+                                <ul class="space-y-3 pt-3 border-t border-ivory-300 text-sm text-slate-700">
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-circle-check text-emerald-700 mt-1 shrink-0"></i>
+                                        <span>MBBS & BDS placements in King Edward Medical University, Allama Iqbal Medical College, Fatima Jinnah Medical University, and Faisalabad Medical University</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-circle-check text-emerald-700 mt-1 shrink-0"></i>
+                                        <span>Engineering and IT admissions in UET Lahore, UET Taxila, and national public sector universities</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-circle-check text-emerald-700 mt-1 shrink-0"></i>
+                                        <span>Over 500 high achievers with the highest batch average in Gojra</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="pt-6 mt-6 border-t border-ivory-300 flex items-center justify-between">
+                                <button type="button" onclick="openPosterLightbox()" class="text-sm font-bold text-emerald-900 hover:text-champagne-700 transition-colors inline-flex items-center gap-2">
+                                    <span>Open Poster Preview</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                </button>
+                                <a href="#admissions" class="text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-emerald-900 transition-colors">
+                                    Admissions Desk
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auto Scrolling Horizontal Campus Gallery -->
+    <section id="gallery" class="py-24 lg:py-28 bg-ivory-100 border-b border-ivory-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 reveal">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-bold uppercase tracking-widest text-champagne-600">Campus Life & Spaces</span>
+                    <h2 class="section-title font-extrabold text-emerald-950 mt-2">Campus Gallery</h2>
+                    <p class="text-slate-600 mt-3 text-base sm:text-lg">
+                        A look inside our classrooms, computer lab, library, and academic environment in Gojra.
+                    </p>
+                </div>
+
+                <!-- Gallery Scroll Control -->
+                <div class="flex items-center gap-3 self-start">
+                    <button type="button" id="gallery-toggle-btn" onclick="toggleGalleryScroll()" class="px-4 py-2.5 rounded-2xl bg-white border border-emerald-900/15 text-emerald-950 text-xs font-bold hover:bg-emerald-50 transition-colors inline-flex items-center gap-2 shadow-sm">
+                        <i id="gallery-toggle-icon" class="fa-solid fa-pause text-emerald-800"></i>
+                        <span id="gallery-toggle-label">Pause Scroll</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Width Auto Scrolling Horizontal Track -->
+        <div class="gallery-viewport py-2">
+            <div id="campus-gallery-track" class="gallery-track px-4">
+                <!-- Populated dynamically with duplicated seamless loop items -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Seven Core Campus & Academic Facilities -->
+    <section id="campus" class="py-24 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-16 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-champagne-600">Campus Facilities</span>
+                <h2 class="section-title font-extrabold text-emerald-950 mt-2">
+                    Learning Environment at SAISC Gojra
+                </h2>
+                <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                    Our campuses are organized to support regular attendance, comfortable study hours, and attentive faculty supervision.
+                </p>
+            </div>
+
+            <!-- Proportional Grid for 7 Facilities -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+                
+                <!-- 1: Closed Building (6 cols) -->
+                <div class="lg:col-span-6 academic-card bg-ivory-100 rounded-3xl p-8 border border-emerald-900/10 reveal">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-900 text-champagne-200 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-building-shield"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-emerald-800 bg-white px-3 py-1 rounded-full border border-emerald-900/10">01</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-emerald-950 mb-3">A Closed Building Campus</h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        A secure closed building structure that maintains student safety, controlled entry, and a quiet atmosphere away from outside noise.
+                    </p>
+                </div>
+
+                <!-- 2: Computer Lab (6 cols) -->
+                <div class="lg:col-span-6 academic-card bg-ivory-100 rounded-3xl p-8 border border-emerald-900/10 reveal">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-champagne-500 text-white flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-desktop"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-champagne-700 bg-white px-3 py-1 rounded-full border border-champagne-200">02</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-emerald-950 mb-3">Computer Lab with Advanced Systems</h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Equipped with modern computer workstations and updated software so ICS and science students complete practical coursework smoothly.
+                    </p>
+                </div>
+
+                <!-- 3: Library (4 cols) -->
+                <div class="lg:col-span-4 academic-card bg-ivory-100 rounded-3xl p-7 border border-emerald-900/10 reveal">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-12 h-12 rounded-2xl bg-white text-emerald-800 flex items-center justify-center text-xl border border-emerald-900/10">
+                            <i class="fa-solid fa-book-bookmark"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400">03</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-950 mb-2">Library</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Stocked with intermediate textbooks, reference guides, and past board papers for quiet self study.
+                    </p>
+                </div>
+
+                <!-- 4: Friendly and Guiding Staff (4 cols) -->
+                <div class="lg:col-span-4 academic-card bg-ivory-100 rounded-3xl p-7 border border-emerald-900/10 reveal">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-12 h-12 rounded-2xl bg-white text-emerald-800 flex items-center justify-center text-xl border border-emerald-900/10">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400">04</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-950 mb-2">Friendly and Guiding Staff</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Supportive coordinators and staff who guide students through daily routines and keep parents informed.
+                    </p>
+                </div>
+
+                <!-- 5: Experienced Subject Specialists (4 cols) -->
+                <div class="lg:col-span-4 academic-card bg-ivory-100 rounded-3xl p-7 border border-emerald-900/10 reveal">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-12 h-12 rounded-2xl bg-white text-emerald-800 flex items-center justify-center text-xl border border-emerald-900/10">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400">05</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-950 mb-2">Experienced Subject Specialists</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Dedicated subject teachers well versed in intermediate board curricula and examination patterns.
+                    </p>
+                </div>
+
+                <!-- 6: Air Conditioned Classrooms (6 cols) -->
+                <div class="lg:col-span-6 academic-card bg-ivory-100 rounded-3xl p-7 border border-emerald-900/10 flex flex-col sm:flex-row items-start gap-5 reveal">
+                    <div class="w-14 h-14 rounded-2xl bg-white text-emerald-800 flex items-center justify-center text-2xl shrink-0 border border-emerald-900/10">
+                        <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-champagne-600">06</span>
+                        <h3 class="text-lg font-bold text-emerald-950 mb-2">Air Conditioned Classrooms</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Air conditioned, well lit classrooms that provide a comfortable study temperature during warmer months.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 7: Clean and Sustainable Environment (6 cols) -->
+                <div class="lg:col-span-6 academic-card bg-ivory-100 rounded-3xl p-7 border border-emerald-900/10 flex flex-col sm:flex-row items-start gap-5 reveal">
+                    <div class="w-14 h-14 rounded-2xl bg-white text-emerald-800 flex items-center justify-center text-2xl shrink-0 border border-emerald-900/10">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-champagne-600">07</span>
+                        <h3 class="text-lg font-bold text-emerald-950 mb-2">Clean and Sustainable Environment</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Well maintained halls, clean facilities, and an orderly campus atmosphere conducive to daily learning.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership & Faculty Section -->
+    <section id="leadership" class="py-24 lg:py-32 bg-ivory-100 border-y border-ivory-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="max-w-3xl mb-16 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-champagne-600">Principals & Faculty</span>
+                <h2 class="section-title font-extrabold text-emerald-950 mt-2">
+                    College Principals & Teaching Faculty
+                </h2>
+                <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                    Our three Principals teach core intermediate subjects alongside experienced departmental faculty members.
+                </p>
+            </div>
+
+            <!-- The Three Principals -->
+            <div class="mb-20">
+                <div class="flex items-center gap-3 mb-8 reveal">
+                    <span class="w-3 h-3 rounded-full bg-emerald-800"></span>
+                    <h3 class="text-lg font-extrabold uppercase tracking-wider text-emerald-950">Principals of the College</h3>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Principal 1: Muhammad Abdul Razaq Tahir -->
+                    <article class="academic-card bg-white rounded-3xl p-8 border border-emerald-900/15 relative overflow-hidden reveal">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 rounded-2xl bg-emerald-900 text-champagne-200 flex items-center justify-center font-display font-bold text-xl shadow-sm">
+                                RT
+                            </div>
+                            <span class="px-3.5 py-1.5 rounded-full bg-emerald-900 text-white text-xs font-bold tracking-wide">
+                                Principal
+                            </span>
+                        </div>
+                        <h4 class="text-xl font-extrabold text-emerald-950 leading-snug">
+                            Muhammad Abdul Razaq Tahir
+                        </h4>
+                        <p class="text-sm font-bold text-champagne-700 mt-1.5 flex items-center gap-2">
+                            <i class="fa-solid fa-atom"></i>
+                            <span>Teaches Physics</span>
+                        </p>
+                        <p class="text-sm text-slate-600 mt-4 leading-relaxed pt-4 border-t border-ivory-300">
+                            Oversees academic discipline and teaches intermediate Physics with focus on numerical problem solving and conceptual clarity.
+                        </p>
+                    </article>
+
+                    <!-- Principal 2: Asif Baig -->
+                    <article class="academic-card bg-white rounded-3xl p-8 border border-emerald-900/15 relative overflow-hidden reveal">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 rounded-2xl bg-emerald-900 text-champagne-200 flex items-center justify-center font-display font-bold text-xl shadow-sm">
+                                AB
+                            </div>
+                            <span class="px-3.5 py-1.5 rounded-full bg-emerald-900 text-white text-xs font-bold tracking-wide">
+                                Principal
+                            </span>
+                        </div>
+                        <h4 class="text-xl font-extrabold text-emerald-950 leading-snug">
+                            Asif Baig
+                        </h4>
+                        <p class="text-sm font-bold text-champagne-700 mt-1.5 flex items-center gap-2">
+                            <i class="fa-solid fa-feather-pointed"></i>
+                            <span>Teaches English</span>
+                        </p>
+                        <p class="text-sm text-slate-600 mt-4 leading-relaxed pt-4 border-t border-ivory-300">
+                            Guides student mentorship and teaches intermediate English grammar, composition, and textbook comprehension.
+                        </p>
+                    </article>
+
+                    <!-- Principal 3: Sheikh Naeem -->
+                    <article class="academic-card bg-white rounded-3xl p-8 border border-emerald-900/15 relative overflow-hidden reveal">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 rounded-2xl bg-emerald-900 text-champagne-200 flex items-center justify-center font-display font-bold text-xl shadow-sm">
+                                SN
+                            </div>
+                            <span class="px-3.5 py-1.5 rounded-full bg-emerald-900 text-white text-xs font-bold tracking-wide">
+                                Principal
+                            </span>
+                        </div>
+                        <h4 class="text-xl font-extrabold text-emerald-950 leading-snug">
+                            Sheikh Naeem
+                        </h4>
+                        <p class="text-sm font-bold text-champagne-700 mt-1.5 flex items-center gap-2">
+                            <i class="fa-solid fa-square-root-variable"></i>
+                            <span>Teaches Mathematics</span>
+                        </p>
+                        <p class="text-sm text-slate-600 mt-4 leading-relaxed pt-4 border-t border-ivory-300">
+                            Supervises academic testing and teaches intermediate Mathematics across calculus, algebra, and trigonometry.
+                        </p>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Departmental Faculty Directory -->
+            <div>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 reveal">
+                    <div class="flex items-center gap-3">
+                        <span class="w-3 h-3 rounded-full bg-champagne-500"></span>
+                        <h3 class="text-lg font-extrabold uppercase tracking-wider text-emerald-950">Departmental Faculty</h3>
+                    </div>
+
+                    <div class="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-white border border-emerald-900/10 self-start">
+                        <button type="button" onclick="switchFacultySection('mednonmed')" id="fac-tab-mednonmed" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-900 text-white shadow-sm transition-all">
+                            Medical & Non Medical Sections
+                        </button>
+                        <button type="button" onclick="switchFacultySection('additional')" id="fac-tab-additional" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-emerald-950 transition-all">
+                            Additional Sections
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab Panel 1: Medical & Non Medical Sections Faculty -->
+                <div id="fac-panel-mednonmed" class="grid md:grid-cols-3 gap-6 fade-panel">
+                    <!-- Muhammad Shahzad Warya -->
+                    <div class="academic-card bg-white rounded-3xl p-7 border border-emerald-900/10">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-800 text-white flex items-center justify-center font-bold text-base shrink-0">
+                                SW
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-emerald-950">Muhammad Shahzad Warya</h4>
+                                <p class="text-xs font-bold uppercase tracking-wider text-champagne-700 mt-0.5">Teaches Urdu</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Instructor for Urdu literature and composition in Medical and Non Medical intermediate sections.
+                        </p>
+                    </div>
+
+                    <!-- Muhammad Aqib Ali -->
+                    <div class="academic-card bg-white rounded-3xl p-7 border border-emerald-900/10">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-800 text-white flex items-center justify-center font-bold text-base shrink-0">
+                                AA
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-emerald-950">Muhammad Aqib Ali</h4>
+                                <p class="text-xs font-bold uppercase tracking-wider text-champagne-700 mt-0.5">Teaches Chemistry</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Instructor for Chemistry across Medical and Non Medical intermediate sections.
+                        </p>
+                    </div>
+
+                    <!-- Muhammad Naseem Chand -->
+                    <div class="academic-card bg-white rounded-3xl p-7 border border-emerald-900/10">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-800 text-white flex items-center justify-center font-bold text-base shrink-0">
+                                NC
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-emerald-950">Muhammad Naseem Chand</h4>
+                                <p class="text-xs font-bold uppercase tracking-wider text-champagne-700 mt-0.5">Islamiat & Tarjuma Al Quran</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Instructor for Islamiat and Tarjuma Al Quran in Medical and Non Medical intermediate sections.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tab Panel 2: Additional Sections Placeholders -->
+                <div id="fac-panel-additional" class="grid md:grid-cols-3 gap-6 hidden fade-panel">
+                    <div class="bg-white/70 rounded-3xl p-7 border border-dashed border-emerald-900/25">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-widest text-emerald-700">ICS Section</span>
+                                <h4 class="text-base font-bold text-emerald-950">Computer Science Faculty</h4>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Faculty roster for the ICS computing section will be added here by the academic office.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/70 rounded-3xl p-7 border border-dashed border-emerald-900/25">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-dna"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-widest text-emerald-700">Life Sciences</span>
+                                <h4 class="text-base font-bold text-emerald-950">Biology Department Faculty</h4>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Faculty roster for the Biology department will be added here by the college office.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/70 rounded-3xl p-7 border border-dashed border-emerald-900/25">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-landmark"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-widest text-emerald-700">Allied Studies</span>
+                                <h4 class="text-base font-bold text-emerald-950">Pakistan Studies & Humanities</h4>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Faculty roster for allied intermediate subjects will be added here by the college office.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Admissions & Inquiry Section with Custom Built Dropdown Menus -->
+    <section id="admissions" class="py-24 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Column: Admission Guidance (6 cols) -->
+                <div class="lg:col-span-6 space-y-8 reveal">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-champagne-600">Admissions Office</span>
+                        <h2 class="section-title font-extrabold text-emerald-950 mt-2">
+                            Admissions at SAISC Gojra
+                        </h2>
+                        <p class="text-slate-600 mt-4 text-base leading-relaxed">
+                            Parents and students can visit either campus in Gojra or submit an inquiry below for class schedules, fee structure, and merit scholarships.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Admission Tabs -->
+                    <div class="bg-ivory-100 rounded-3xl border border-emerald-900/10 overflow-hidden shadow-sm">
+                        <div class="grid grid-cols-3 border-b border-ivory-300 bg-white text-xs sm:text-sm font-bold">
+                            <button type="button" onclick="switchAdmissionTab('eligibility')" id="adm-tab-eligibility" class="py-4 px-2 text-emerald-900 border-b-2 border-emerald-800 bg-emerald-50/50 transition-colors">
+                                Eligibility
+                            </button>
+                            <button type="button" onclick="switchAdmissionTab('documents')" id="adm-tab-documents" class="py-4 px-2 text-slate-500 hover:text-emerald-900 transition-colors">
+                                Documents
+                            </button>
+                            <button type="button" onclick="switchAdmissionTab('campusvisit')" id="adm-tab-campusvisit" class="py-4 px-2 text-slate-500 hover:text-emerald-900 transition-colors">
+                                Campuses
+                            </button>
+                        </div>
+
+                        <div class="p-6 sm:p-8">
+                            <!-- Eligibility Tab -->
+                            <div id="adm-panel-eligibility" class="space-y-4 fade-panel">
+                                <h3 class="text-lg font-bold text-emerald-950">Matriculation Requirement</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">
+                                    Applicants for Intermediate Part One must have passed their Secondary School Certificate examination.
+                                </p>
+                                <div class="space-y-2.5 pt-2">
+                                    <div class="p-3.5 rounded-2xl bg-white border border-emerald-900/10 flex items-center justify-between">
+                                        <span class="text-sm font-bold text-emerald-950">FSc Pre Medical</span>
+                                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-800">Science Group</span>
+                                    </div>
+                                    <div class="p-3.5 rounded-2xl bg-white border border-emerald-900/10 flex items-center justify-between">
+                                        <span class="text-sm font-bold text-emerald-950">FSc Pre Engineering</span>
+                                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-800">Science Group</span>
+                                    </div>
+                                    <div class="p-3.5 rounded-2xl bg-white border border-emerald-900/10 flex items-center justify-between">
+                                        <span class="text-sm font-bold text-emerald-950">ICS Computer Science</span>
+                                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-800">Science or General</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Documents Tab -->
+                            <div id="adm-panel-documents" class="space-y-4 hidden fade-panel">
+                                <h3 class="text-lg font-bold text-emerald-950">Required Documents</h3>
+                                <ul class="space-y-2.5 text-sm text-slate-700">
+                                    <li class="flex items-center gap-3 p-3 rounded-xl bg-white border border-emerald-900/5">
+                                        <i class="fa-solid fa-file-lines text-emerald-700"></i>
+                                        <span>Attested copy of Matriculation Result Card</span>
+                                    </li>
+                                    <li class="flex items-center gap-3 p-3 rounded-xl bg-white border border-emerald-900/5">
+                                        <i class="fa-solid fa-id-card text-emerald-700"></i>
+                                        <span>Copy of Student B Form and Father CNIC</span>
+                                    </li>
+                                    <li class="flex items-center gap-3 p-3 rounded-xl bg-white border border-emerald-900/5">
+                                        <i class="fa-solid fa-image-portrait text-emerald-700"></i>
+                                        <span>Four recent passport size photographs</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Campuses Tab -->
+                            <div id="adm-panel-campusvisit" class="space-y-4 hidden fade-panel">
+                                <h3 class="text-lg font-bold text-emerald-950">Boys & Girls Campuses in Gojra</h3>
+                                <div class="space-y-2.5 text-sm">
+                                    <div class="p-3.5 rounded-2xl bg-white border border-emerald-900/10">
+                                        <p class="font-bold text-emerald-950">Boys Campus</p>
+                                        <p class="text-xs text-slate-600 mt-0.5">Main Hafeez Park Road, Gojra</p>
+                                    </div>
+                                    <div class="p-3.5 rounded-2xl bg-white border border-emerald-900/10">
+                                        <p class="font-bold text-emerald-950">Girls Campus</p>
+                                        <p class="text-xs text-slate-600 mt-0.5">Tehsil Office Road, Gojra</p>
+                                    </div>
+                                    <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-900/10 text-xs font-bold text-emerald-950">
+                                        <i class="fa-solid fa-phone text-champagne-600 mr-2"></i>
+                                        Helpline: 0300 6557086, 0306 1313562, 0300 8180779
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Admission Inquiry Form with Custom Dropdowns (6 cols) -->
+                <div class="lg:col-span-6 reveal">
+                    <div class="bg-ivory-100 rounded-3xl p-8 sm:p-10 border border-emerald-900/10 shadow-lg shadow-emerald-950/5">
+                        <div class="mb-6">
+                            <span class="text-xs font-bold uppercase tracking-widest text-emerald-800">Admissions Desk</span>
+                            <h3 class="text-2xl font-extrabold text-emerald-950 mt-1">Admission Inquiry Form</h3>
+                            <p class="text-sm text-slate-600 mt-1">Share your details below and our office staff will get in touch.</p>
+                        </div>
+
+                        <form id="admission-form" class="space-y-4">
+                            <div>
+                                <label for="studentName" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Student Full Name</label>
+                                <input type="text" id="studentName" required placeholder="Enter student full name" class="w-full px-4 py-3.5 rounded-2xl bg-white border border-emerald-900/15 text-slate-900 text-sm focus:outline-none focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/10 transition-all">
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="guardianPhone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Contact Number</label>
+                                    <input type="tel" id="guardianPhone" required placeholder="0300 0000000" class="w-full px-4 py-3.5 rounded-2xl bg-white border border-emerald-900/15 text-slate-900 text-sm focus:outline-none focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/10 transition-all">
+                                </div>
+
+                                <!-- Custom Built Dropdown 1: Preferred Academic Stream -->
+                                <div class="relative custom-dropdown" data-dropdown="program">
+                                    <span id="program-label" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Preferred Program</span>
+                                    <input type="hidden" id="programSelect" name="programSelect" value="FSc Pre Medical">
+                                    <button type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="program-label" class="custom-dropdown-trigger w-full px-4 py-3.5 rounded-2xl bg-white border border-emerald-900/15 text-slate-900 text-sm font-medium flex items-center justify-between hover:border-emerald-700 focus:outline-none focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/10 transition-all">
+                                        <span class="custom-dropdown-value truncate">FSc Pre Medical</span>
+                                        <i class="fa-solid fa-chevron-down text-xs text-emerald-800 transition-transform duration-300 dropdown-chevron"></i>
+                                    </button>
+                                    <ul role="listbox" class="custom-dropdown-menu absolute left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-emerald-900/15 py-2 z-30">
+                                        <li role="option" aria-selected="true" data-value="FSc Pre Medical" class="custom-dropdown-option px-4 py-3 text-sm font-semibold text-emerald-950 bg-emerald-50/70 hover:bg-emerald-50 cursor-pointer flex items-center justify-between transition-colors">
+                                            <span>FSc Pre Medical</span>
+                                            <i class="fa-solid fa-check text-xs text-emerald-700 option-check"></i>
+                                        </li>
+                                        <li role="option" aria-selected="false" data-value="FSc Pre Engineering" class="custom-dropdown-option px-4 py-3 text-sm font-medium text-slate-700 hover:bg-emerald-50 hover:text-emerald-950 cursor-pointer flex items-center justify-between transition-colors">
+                                            <span>FSc Pre Engineering</span>
+                                            <i class="fa-solid fa-check text-xs text-emerald-700 option-check opacity-0"></i>
+                                        </li>
+                                        <li role="option" aria-selected="false" data-value="ICS Computer Science" class="custom-dropdown-option px-4 py-3 text-sm font-medium text-slate-700 hover:bg-emerald-50 hover:text-emerald-950 cursor-pointer flex items-center justify-between transition-colors">
+                                            <span>ICS Computer Science</span>
+                                            <i class="fa-solid fa-check text-xs text-emerald-700 option-check opacity-0"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Custom Built Dropdown 2: Campus Preference -->
+                            <div class="relative custom-dropdown" data-dropdown="campusChoice">
+                                <span id="campus-label" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Campus Wing</span>
+                                <input type="hidden" id="campusChoiceSelect" name="campusChoiceSelect" value="Boys Campus Main Hafeez Park Road">
+                                <button type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="campus-label" class="custom-dropdown-trigger w-full px-4 py-3.5 rounded-2xl bg-white border border-emerald-900/15 text-slate-900 text-sm font-medium flex items-center justify-between hover:border-emerald-700 focus:outline-none focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/10 transition-all">
+                                    <span class="custom-dropdown-value truncate">Boys Campus Main Hafeez Park Road</span>
+                                    <i class="fa-solid fa-chevron-down text-xs text-emerald-800 transition-transform duration-300 dropdown-chevron"></i>
+                                </button>
+                                <ul role="listbox" class="custom-dropdown-menu absolute left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-emerald-900/15 py-2 z-30">
+                                    <li role="option" aria-selected="true" data-value="Boys Campus Main Hafeez Park Road" class="custom-dropdown-option px-4 py-3 text-sm font-semibold text-emerald-950 bg-emerald-50/70 hover:bg-emerald-50 cursor-pointer flex items-center justify-between transition-colors">
+                                        <span>Boys Campus Main Hafeez Park Road</span>
+                                        <i class="fa-solid fa-check text-xs text-emerald-700 option-check"></i>
+                                    </li>
+                                    <li role="option" aria-selected="false" data-value="Girls Campus Tehsil Office Road" class="custom-dropdown-option px-4 py-3 text-sm font-medium text-slate-700 hover:bg-emerald-50 hover:text-emerald-950 cursor-pointer flex items-center justify-between transition-colors">
+                                        <span>Girls Campus Tehsil Office Road</span>
+                                        <i class="fa-solid fa-check text-xs text-emerald-700 option-check opacity-0"></i>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <label for="matricMarks" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Matric Marks or Note</label>
+                                <textarea id="matricMarks" rows="3" required placeholder="Enter Matric marks or your question for the admissions desk" class="w-full px-4 py-3.5 rounded-2xl bg-white border border-emerald-900/15 text-slate-900 text-sm focus:outline-none focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/10 transition-all"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-2xl bg-emerald-900 text-white font-bold text-sm sm:text-base hover:bg-emerald-800 transition-all shadow-md shadow-emerald-900/15 flex items-center justify-center gap-2">
+                                <span>Submit Inquiry</span>
+                                <i class="fa-solid fa-paper-plane text-xs text-champagne-200"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Strictly Contextual Institutional Footer -->
+    <footer class="bg-emerald-950 text-emerald-100 py-14 border-t border-emerald-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10 border-b border-emerald-900">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-900 border border-emerald-700 flex items-center justify-center text-champagne-200 text-xl">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <p class="text-lg font-extrabold text-white">Superior Allama Iqbal Science College Gojra</p>
+                        <p class="text-xs text-emerald-300 mt-0.5">Boys Campus Main Hafeez Park Road & Girls Campus Tehsil Office Road, Gojra</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-6 text-sm font-semibold text-emerald-200">
+                    <a href="#philosophy" class="hover:text-white transition-colors">Philosophy</a>
+                    <a href="#programs" class="hover:text-white transition-colors">Programs</a>
+                    <a href="#excellence" class="hover:text-white transition-colors">Proof of Excellence</a>
+                    <a href="#gallery" class="hover:text-white transition-colors">Gallery</a>
+                    <a href="#campus" class="hover:text-white transition-colors">Facilities</a>
+                    <a href="#leadership" class="hover:text-white transition-colors">Faculty</a>
+                    <a href="#admissions" class="hover:text-white transition-colors">Admissions</a>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-400">
+                <p>Copyright 2026 Superior Allama Iqbal Science College Gojra. All rights reserved.</p>
+                <p>Admissions Helpline: 0300 6557086, 0306 1313562, 0300 8180779</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Single Official Merit Poster Configuration (Replace posterImageSrc with your scanned sheet image path)
+        const meritPosterConfig = {
+            title: 'Official Annual University Placement Poster',
+            badge: 'Verified Institutional Record',
+            imageSrc: '',
+            placeholderLabel: 'Official Annual University Placement Poster'
+        };
+
+        // Campus Gallery Slides (Replace imageSrc with real campus photographs)
+        const campusGallerySlides = [
+            {
+                title: 'Closed Campus Building',
+                caption: 'Secure academic block on Main Hafeez Park Road',
+                icon: 'fa-building-shield',
+                imageSrc: ''
+            },
+            {
+                title: 'Air Conditioned Classrooms',
+                caption: 'Well lit lecture rooms arranged for focused study',
+                icon: 'fa-chalkboard',
+                imageSrc: ''
+            },
+            {
+                title: 'Advanced Computer Lab',
+                caption: 'Modern workstations for ICS and science practicals',
+                icon: 'fa-desktop',
+                imageSrc: ''
+            },
+            {
+                title: 'College Library',
+                caption: 'Reference books, textbooks, and quiet study space',
+                icon: 'fa-book-bookmark',
+                imageSrc: ''
+            },
+            {
+                title: 'Science Laboratories',
+                caption: 'Equipped Physics, Chemistry, and Biology practical labs',
+                icon: 'fa-flask',
+                imageSrc: ''
+            },
+            {
+                title: 'Clean Campus Courtyard',
+                caption: 'Orderly, clean, and well maintained student premises',
+                icon: 'fa-leaf',
+                imageSrc: ''
+            }
+        ];
+
+        function renderCampusGallery() {
+            const track = document.getElementById('campus-gallery-track');
+            if (!track) return;
+
+            // Duplicate array for seamless infinite horizontal marquee loop
+            const loopSlides = [...campusGallerySlides, ...campusGallerySlides];
+
+            track.innerHTML = loopSlides.map((slide, idx) => `
+                <figure onclick="openGalleryLightbox(${idx % campusGallerySlides.length})" role="button" tabindex="0" aria-label="View ${slide.title}" class="group w-72 sm:w-80 shrink-0 bg-white rounded-3xl overflow-hidden border border-emerald-900/10 shadow-sm hover:shadow-xl hover:border-emerald-700/30 transition-all cursor-pointer">
+                    <div class="relative h-48 bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-950 flex flex-col items-center justify-center p-6 text-center overflow-hidden">
+                        ${slide.imageSrc
+                            ? `<img src="${slide.imageSrc}" alt="${slide.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">`
+                            : `
+                            <div class="w-12 h-12 rounded-2xl bg-white/10 border border-champagne-200/30 text-champagne-200 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid ${slide.icon}"></i>
+                            </div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-200">Campus Photo Frame</span>
+                            `
+                        }
+                        <span class="absolute top-3 right-3 w-8 h-8 rounded-xl bg-white/90 text-emerald-950 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity shadow">
+                            <i class="fa-solid fa-expand"></i>
+                        </span>
+                    </div>
+                    <figcaption class="p-5">
+                        <h3 class="text-base font-extrabold text-emerald-950">${slide.title}</h3>
+                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">${slide.caption}</p>
+                    </figcaption>
+                </figure>
+            `).join('');
+        }
+
+        let isGalleryPaused = false;
+        function toggleGalleryScroll() {
+            const track = document.getElementById('campus-gallery-track');
+            const icon = document.getElementById('gallery-toggle-icon');
+            const label = document.getElementById('gallery-toggle-label');
+            isGalleryPaused = !isGalleryPaused;
+
+            if (isGalleryPaused) {
+                track.classList.add('paused');
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+                label.textContent = 'Resume Scroll';
+            } else {
+                track.classList.remove('paused');
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+                label.textContent = 'Pause Scroll';
+            }
+        }
+
+        function openGalleryLightbox(slideIndex) {
+            const slide = campusGallerySlides[slideIndex];
+            if (!slide) return;
+
+            const modal = document.getElementById('poster-lightbox');
+            const badge = document.getElementById('lightbox-badge');
+            const title = document.getElementById('lightbox-title');
+            const body = document.getElementById('lightbox-body');
+
+            badge.textContent = 'SAISC Campus Gallery';
+            title.textContent = slide.title;
+
+            if (slide.imageSrc) {
+                body.innerHTML = `<img src="${slide.imageSrc}" alt="${slide.title}" class="max-h-[75vh] w-auto rounded-2xl shadow-lg">`;
+            } else {
+                body.innerHTML = `
+                    <div class="bg-white rounded-3xl p-8 sm:p-12 border border-emerald-900/10 text-center max-w-lg space-y-4">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-900 flex items-center justify-center text-2xl mx-auto">
+                            <i class="fa-solid ${slide.icon}"></i>
+                        </div>
+                        <h4 class="text-xl font-extrabold text-emerald-950">${slide.title}</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">${slide.caption}. Add your campus photograph path in campusGallerySlides to display the image here.</p>
+                    </div>
+                `;
+            }
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openPosterLightbox() {
+            const modal = document.getElementById('poster-lightbox');
+            const badge = document.getElementById('lightbox-badge');
+            const title = document.getElementById('lightbox-title');
+            const body = document.getElementById('lightbox-body');
+
+            badge.textContent = meritPosterConfig.badge;
+            title.textContent = meritPosterConfig.title;
+
+            if (meritPosterConfig.imageSrc) {
+                body.innerHTML = `<img src="${meritPosterConfig.imageSrc}" alt="${meritPosterConfig.title}" class="max-h-[75vh] w-auto rounded-2xl shadow-lg">`;
+            } else {
+                body.innerHTML = `
+                    <div class="bg-white rounded-3xl p-8 sm:p-12 border border-emerald-900/10 text-center max-w-xl space-y-4">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-900 flex items-center justify-center text-2xl mx-auto">
+                            <i class="fa-solid fa-image"></i>
+                        </div>
+                        <h4 class="text-xl font-extrabold text-emerald-950">${meritPosterConfig.placeholderLabel}</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            This frame is ready for your college result and university placement sheet. Set meritPosterConfig.imageSrc in the script to your scanned image file path to display the full poster.
+                        </p>
+                    </div>
+                `;
+            }
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePosterLightbox() {
+            const modal = document.getElementById('poster-lightbox');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Faculty Section Tab Switcher with Smooth Fade
+        function switchFacultySection(sectionKey) {
+            const medPanel = document.getElementById('fac-panel-mednonmed');
+            const addPanel = document.getElementById('fac-panel-additional');
+            const medBtn = document.getElementById('fac-tab-mednonmed');
+            const addBtn = document.getElementById('fac-tab-additional');
+
+            if (sectionKey === 'mednonmed') {
+                addPanel.classList.add('hidden');
+                medPanel.classList.remove('hidden', 'fade-panel');
+                void medPanel.offsetWidth;
+                medPanel.classList.add('fade-panel');
+
+                medBtn.classList.add('bg-emerald-900', 'text-white', 'shadow-sm');
+                medBtn.classList.remove('text-slate-600');
+                addBtn.classList.remove('bg-emerald-900', 'text-white', 'shadow-sm');
+                addBtn.classList.add('text-slate-600');
+            } else {
+                medPanel.classList.add('hidden');
+                addPanel.classList.remove('hidden', 'fade-panel');
+                void addPanel.offsetWidth;
+                addPanel.classList.add('fade-panel');
+
+                addBtn.classList.add('bg-emerald-900', 'text-white', 'shadow-sm');
+                addBtn.classList.remove('text-slate-600');
+                medBtn.classList.remove('bg-emerald-900', 'text-white', 'shadow-sm');
+                medBtn.classList.add('text-slate-600');
+            }
+        }
+
+        // Custom Dropdown Value Setter
+        function setCustomDropdownValue(dropdownContainer, value) {
+            const hiddenInput = dropdownContainer.querySelector('input[type="hidden"]');
+            const valueLabel = dropdownContainer.querySelector('.custom-dropdown-value');
+            const options = dropdownContainer.querySelectorAll('.custom-dropdown-option');
+
+            hiddenInput.value = value;
+            valueLabel.textContent = value;
+
+            options.forEach(opt => {
+                const isSelected = opt.getAttribute('data-value') === value;
+                opt.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+                const checkIcon = opt.querySelector('.option-check');
+                if (isSelected) {
+                    opt.classList.add('font-semibold', 'text-emerald-950', 'bg-emerald-50/70');
+                    opt.classList.remove('font-medium', 'text-slate-700');
+                    if (checkIcon) checkIcon.classList.remove('opacity-0');
+                } else {
+                    opt.classList.remove('font-semibold', 'text-emerald-950', 'bg-emerald-50/70');
+                    opt.classList.add('font-medium', 'text-slate-700');
+                    if (checkIcon) checkIcon.classList.add('opacity-0');
+                }
+            });
+        }
+
+        function selectProgramFromCard(programName) {
+            const programDropdown = document.querySelector('[data-dropdown="program"]');
+            if (programDropdown) {
+                setCustomDropdownValue(programDropdown, programName);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render main merit poster if imageSrc is set
+            if (meritPosterConfig.imageSrc) {
+                const slot = document.getElementById('main-poster-slot');
+                if (slot) {
+                    slot.innerHTML = `<img src="${meritPosterConfig.imageSrc}" alt="${meritPosterConfig.title}" class="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-500">`;
+                }
+            }
+
+            // Render auto-scrolling horizontal campus gallery
+            renderCampusGallery();
+
+            // Close lightbox when clicking outside modal card
+            const posterLightbox = document.getElementById('poster-lightbox');
+            posterLightbox.addEventListener('click', (e) => {
+                if (e.target === posterLightbox) {
+                    closePosterLightbox();
+                }
+            });
+
+            // Initialize Custom Dropdown Menus
+            const customDropdowns = document.querySelectorAll('.custom-dropdown');
+
+            function closeAllDropdowns() {
+                customDropdowns.forEach(dd => {
+                    const menu = dd.querySelector('.custom-dropdown-menu');
+                    const trigger = dd.querySelector('.custom-dropdown-trigger');
+                    const chevron = dd.querySelector('.dropdown-chevron');
+                    menu.classList.remove('open');
+                    trigger.setAttribute('aria-expanded', 'false');
+                    if (chevron) chevron.classList.remove('rotate-180');
+                });
+            }
+
+            customDropdowns.forEach(dd => {
+                const trigger = dd.querySelector('.custom-dropdown-trigger');
+                const menu = dd.querySelector('.custom-dropdown-menu');
+                const chevron = dd.querySelector('.dropdown-chevron');
+                const options = dd.querySelectorAll('.custom-dropdown-option');
+
+                trigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isOpen = menu.classList.contains('open');
+                    closeAllDropdowns();
+                    if (!isOpen) {
+                        menu.classList.add('open');
+                        trigger.setAttribute('aria-expanded', 'true');
+                        if (chevron) chevron.classList.add('rotate-180');
+                    }
+                });
+
+                options.forEach(opt => {
+                    opt.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const val = opt.getAttribute('data-value');
+                        setCustomDropdownValue(dd, val);
+                        closeAllDropdowns();
+                    });
+                });
+            });
+
+            document.addEventListener('click', closeAllDropdowns);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeAllDropdowns();
+                    closePosterLightbox();
+                }
+            });
+
+            // Sticky Navbar Elevation on Scroll
+            const navbar = document.getElementById('navbar');
+            const handleScroll = () => {
+                if (window.scrollY > 24) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            };
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            handleScroll();
+
+            // Enhanced Burger Menu & Slide Over Drawer
+            const burgerBtn = document.getElementById('burger-btn');
+            const drawerBackdrop = document.getElementById('drawer-backdrop');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerCloseBtn = document.getElementById('drawer-close-btn');
+            const drawerLinks = mobileDrawer.querySelectorAll('a');
+
+            function openDrawer() {
+                burgerBtn.classList.add('burger-open');
+                burgerBtn.setAttribute('aria-expanded', 'true');
+                drawerBackdrop.classList.add('open');
+                mobileDrawer.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeDrawer() {
+                burgerBtn.classList.remove('burger-open');
+                burgerBtn.setAttribute('aria-expanded', 'false');
+                drawerBackdrop.classList.remove('open');
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            burgerBtn.addEventListener('click', () => {
+                const isOpen = mobileDrawer.classList.contains('open');
+                if (isOpen) {
+                    closeDrawer();
+                } else {
+                    openDrawer();
+                }
+            });
+
+            drawerCloseBtn.addEventListener('click', closeDrawer);
+
+            drawerBackdrop.addEventListener('click', (e) => {
+                if (e.target === drawerBackdrop) {
+                    closeDrawer();
+                }
+            });
+
+            drawerLinks.forEach(link => {
+                link.addEventListener('click', closeDrawer);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
+                    closeDrawer();
+                }
+            });
+
+            // Smooth Typewriter Effect in Hero
+            const typewriterEl = document.getElementById('typewriter-text');
+            const phrases = [
+                'Intermediate Scholars',
+                'FSc Pre Medical',
+                'FSc Pre Engineering',
+                'ICS Computer Science',
+                'Focused Academic Study'
+            ];
+            let phraseIndex = 0;
+            let charIndex = phrases[0].length;
+            let isDeleting = false;
+
+            function runTypewriter() {
+                const currentPhrase = phrases[phraseIndex];
+
+                if (isDeleting) {
+                    charIndex--;
+                    typewriterEl.textContent = currentPhrase.substring(0, charIndex);
+                } else {
+                    charIndex++;
+                    typewriterEl.textContent = currentPhrase.substring(0, charIndex);
+                }
+
+                let delay = isDeleting ? 45 : 85;
+
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    delay = 2200;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    delay = 350;
+                }
+
+                setTimeout(runTypewriter, delay);
+            }
+
+            setTimeout(() => {
+                isDeleting = true;
+                runTypewriter();
+            }, 2200);
+
+            // IntersectionObserver Scroll Reveal & Animated Counters
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // Counter Animation
+            const counters = document.querySelectorAll('.counter');
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const targetEl = entry.target;
+                        const targetVal = parseInt(targetEl.getAttribute('data-target'), 10);
+                        const duration = 1200;
+                        const startTime = performance.now();
+
+                        function updateCounter(currentTime) {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const easeOut = 1 - Math.pow(1 - progress, 3);
+                            targetEl.textContent = Math.round(easeOut * targetVal);
+
+                            if (progress < 1) {
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                targetEl.textContent = targetVal;
+                            }
+                        }
+
+                        requestAnimationFrame(updateCounter);
+                        counterObserver.unobserve(targetEl);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(c => counterObserver.observe(c));
+
+            // Admission Inquiry Form Handling
+            const admissionForm = document.getElementById('admission-form');
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+
+            admissionForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nameInput = document.getElementById('studentName').value.trim();
+                const programInput = document.getElementById('programSelect').value;
+
+                toastMessage.textContent = `Thank you, ${nameInput}. Your inquiry for ${programInput} has been registered.`;
+                toast.classList.remove('translate-y-32', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+
+                admissionForm.reset();
+                selectProgramFromCard('FSc Pre Medical');
+                const campusDropdown = document.querySelector('[data-dropdown="campusChoice"]');
+                if (campusDropdown) {
+                    setCustomDropdownValue(campusDropdown, 'Boys Campus Main Hafeez Park Road');
+                }
+
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-32', 'opacity-0');
+                }, 4500);
+            });
+        });
+
+        // Admissions Tabs Switcher with Smooth Fade
+        function switchAdmissionTab(tabKey) {
+            const keys = ['eligibility', 'documents', 'campusvisit'];
+            keys.forEach(key => {
+                const btn = document.getElementById(`adm-tab-${key}`);
+                const panel = document.getElementById(`adm-panel-${key}`);
+                if (key === tabKey) {
+                    panel.classList.remove('hidden', 'fade-panel');
+                    void panel.offsetWidth;
+                    panel.classList.add('fade-panel');
+                    btn.classList.remove('text-slate-500');
+                    btn.classList.add('text-emerald-900', 'border-b-2', 'border-emerald-800', 'bg-emerald-50/50');
+                } else {
+                    panel.classList.add('hidden');
+                    btn.classList.add('text-slate-500');
+                    btn.classList.remove('text-emerald-900', 'border-b-2', 'border-emerald-800', 'bg-emerald-50/50');
+                }
+            });
+        }
+    </script>
+
+    <script>
+        (() => {
+            const disclaimer = document.getElementById('disclaimer');
+            const proceedButton = document.getElementById('disclaimer-proceed');
+
+            document.body.style.overflow = 'hidden';
+
+            proceedButton.addEventListener('click', () => {
+                disclaimer.classList.add('dismissed');
+                document.body.style.overflow = '';
+            });
+        })();
+    </script>
+
+</body>
+</html>
