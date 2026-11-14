@@ -457,7 +457,7 @@
 
       <div class="status-badge">
         <span class="status-dot"></span>
-        <span>UPDATE! Life is genuinely cooked</span>
+        <span>UPDATE! Life is geniunly cooked</span>
       </div>
     </header>
 
@@ -469,7 +469,7 @@
           I am a Human Being from Planet Earth who love making Video Games and Systems that work... I am currently a Pre-Engineering Student. 
         </p>
         <blockquote class="quote-block">
-          <span class="accent-text">✦</span> "Jack of all Trades, Master of None."
+          <span class="accent-text">✦</span> "Die with Memories, not Dreams."
         </blockquote>
       </section>
 
@@ -599,12 +599,19 @@
         <span class="footer-note">All rights reserved</span>
       </div>
       <div class="footer-meta">
+        <span class="footer-note">Visitors</span>
+        <span class="footer-sep">·</span>
+        <span class="time-badge" id="visitor-count" aria-live="polite">Loading…</span>
+        <span class="footer-sep">/</span>
         <span class="footer-note">Local Time</span>
         <span class="footer-sep">·</span>
         <span class="time-badge" id="live-time">PKT 00:00:00</span>
       </div>
     </footer>
   </div>
+
+  <script data-goatcounter="https://rayyanamer.goatcounter.com/count"
+          async src="https://gc.zgo.at/count.js"></script>
 
   <script>
     function updateClock() {
@@ -624,6 +631,28 @@
     }
     setInterval(updateClock, 1000);
     updateClock();
+
+    async function updateVisitorCount() {
+      const countElement = document.getElementById('visitor-count');
+      if (!countElement) return;
+
+      try {
+        const response = await fetch(
+          'https://rayyanamer.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json'
+        );
+        if (!response.ok) throw new Error('Visitor count unavailable');
+
+        const data = await response.json();
+        const count = Number(data.count);
+        if (!Number.isFinite(count)) throw new Error('Invalid visitor count');
+
+        countElement.textContent = new Intl.NumberFormat().format(count);
+      } catch (error) {
+        countElement.textContent = '—';
+      }
+    }
+
+    updateVisitorCount();
   </script>
 </body>
 </html>
