@@ -447,12 +447,12 @@
     <header>
       <div class="header-top">
         <h1>Rayyan Amer</h1>
-        <span class="handle">@RYNx86</span>
+        <span class="handle">@rynx86</span>
       </div>
       
       <div class="subtitle-row">
-        <span>Indie Game Developer &amp; Engineering Student</span>
-        <span class="location">✦ Pakistan, Earth, Solar System</span>
+        <span>Indie Game Developer,Tech Nerd &amp; Engineering Student</span>
+        <span class="location">✦ Gojra, Punjab, Pakistan, Earth</span>
       </div>
 
       <div class="status-badge">
@@ -466,7 +466,7 @@
       <section>
         <h2 class="section-title"><span class="title-sym">■</span> OVERVIEW</h2>
         <p class="bio-text">
-          I am a Human Being from Planet Earth who love making Video Games and Systems that work... I am currently a Pre-Engineering Student. 
+          Hey Stranger<br> I'm <Strong>Rayyan</Strong>. A Pakistani Muslim boy who loves creating things that are cool. I am interested in software and computers, while my secondary interest falls into physical computing. That is why I am studying Pre-Engineering right now with a future goal of entering Robotics & Mechatronics. 
         </p>
         <blockquote class="quote-block">
           <span class="accent-text">✦</span> "A jack of all trades is a master of none, but oftentimes better than a master of one."
@@ -614,23 +614,44 @@
         async src="//gc.zgo.at/count.js"></script>
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      const options = {
-        timeZone: 'Asia/Karachi',
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      };
-      const timeString = new Intl.DateTimeFormat('en-GB', options).format(now);
-      const timeElem = document.getElementById('live-time');
-      if (timeElem) {
-        timeElem.textContent = `PKT ${timeString}`;
-      }
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
+    const clockStartMs = Date.now();
+const clockStartPerf = performance.now();
+
+function updateClock() {
+  const now = new Date();
+  const options = {
+    timeZone: 'Asia/Karachi',
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  };
+  const timeString = new Intl.DateTimeFormat('en-GB', options).format(now);
+
+  // Elapsed milliseconds since clockStartMs using high-res timer
+  const elapsedPerfMs = performance.now() - clockStartPerf;
+  const totalMs = clockStartMs + elapsedPerfMs;
+
+  // Extract fractional milliseconds and scale to 9-digit nanoseconds
+  const fractionalMs = totalMs % 1000;
+  const nanoseconds = Math.floor(fractionalMs * 1_000_000)
+    .toString()
+    .padStart(9, '0');
+
+  const timeElem = document.getElementById('live-time');
+  if (timeElem) {
+    timeElem.textContent = `PKT ${timeString}.${nanoseconds}`;
+  }
+}
+
+// Use requestAnimationFrame so the fractional digits actually animate
+function tick() {
+  updateClock();
+  requestAnimationFrame(tick);
+}
+
+updateClock();
+requestAnimationFrame(tick);
 
     async function updateVisitorCount() {
       const countElement = document.getElementById('visitor-count');
