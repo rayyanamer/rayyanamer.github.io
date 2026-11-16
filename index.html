@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rayyan Amer (@rynx86)</title>
-  <!-- Imported Google Fonts for refined monospaced typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  
-  <style>
+<link href="https://rayyanamer.github.io/assets/icon.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rayyan Amer (@rynx86)</title>
+<!-- Imported Google Fonts for refined monospaced typography -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg: #0b0c0e;
       --bg-surface: #14171d;
@@ -595,194 +594,154 @@
       .project-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .project-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
     }
-  </style>
+  
+    .nav-links a.active,
+    .nav-links a[aria-current="page"] {
+      color: var(--accent-primary);
+      text-decoration: underline;
+      text-decoration-color: var(--accent-primary);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 6px;
+      font-weight: 700;
+    }
+
+    main {
+      display: block;
+    }
+
+    main > section {
+      margin-bottom: 0;
+    }
+
+    .home-intro {
+      max-width: 850px;
+    }
+
+    @media (min-width: 900px) {
+      .home-intro {
+        max-width: 900px;
+      }
+    }
+
+    /* Keep visitor count and local time on one compact footer row */
+    .footer-meta {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: nowrap;
+      gap: 0.35rem;
+      white-space: nowrap;
+      min-width: 0;
+      font-size: 0.68rem;
+      letter-spacing: 0;
+    }
+
+    .footer-meta .time-badge,
+    .footer-meta .footer-note {
+      font-size: inherit;
+    }
+
+    @media (max-width: 560px) {
+      footer {
+        gap: 0.55rem;
+      }
+
+      .footer-meta {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 0.3rem;
+        font-size: clamp(0.54rem, 2.25vw, 0.68rem);
+        letter-spacing: -0.025em;
+      }
+
+      .footer-meta .footer-sep {
+        margin-inline: 0.02rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .footer-meta {
+        font-size: 0.52rem;
+        gap: 0.22rem;
+      }
+    }
+
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      border: 0;
+      border-radius: 7px;
+      overflow: hidden;
+    }
+
+    .nav-favicon {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @media (max-width: 560px) {
+      .nav-brand {
+        width: 30px;
+        height: 30px;
+        padding: 0;
+      }
+    }
+</style>
 </head>
 <body>
-  <div class="container">
-    <nav class="site-nav" aria-label="Main navigation">
-      <a class="nav-brand" href="https://rayyanamer.github.io/" aria-label="Rayyan Amer">
-        <span class="brand-full">Rayyan <span>Amer</span></span>
-        <span class="brand-short">RA</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="https://rayyanamer.github.io/">Home</a></li>
-        <li><a href="https://rayyanamer.github.io/">Projects</a></li>
-        <li><a href="https://rayyanamer.github.io/">Devlog</a></li>
-        <li><a href="https://rayyanamer.github.io/">Connect</a></li>
-      </ul>
-    </nav>
-
-    <!-- HEADER SECTION -->
-    <header>
-      <div class="header-top">
-        <h1>Rayyan Amer</h1>
-        <span class="handle">@rynx86</span>
-      </div>
-      
-      <div class="subtitle-row">
-        <span>Indie Game Developer,Tech Nerd &amp; Engineering Student</span>
-        <span class="location">✦ Gojra, Punjab, Pakistan, Earth</span>
-      </div>
-
-      <div class="status-badge">
-        <span class="status-dot"></span>
-        <span>UPDATE! Life is genuinely cooked!</span>
-      </div>
-    </header>
-
-    <main>
-      <!-- BIO -->
-      <section>
-        <h2 class="section-title"><span class="title-sym">■</span> OVERVIEW</h2>
-        <p class="bio-text">
-          Hey Stranger<br> I'm <Strong>Rayyan</Strong>. A Pakistani Muslim boy who loves creating things that are cool. I am interested in software and computers, while my secondary interest falls into physical computing. That is why I am studying Pre-Engineering right now with a future goal of entering Robotics & Mechatronics. 
-        </p>
-        <blockquote class="quote-block">
-          <span class="accent-text">✦</span> "A jack of all trades is a master of none, but oftentimes better than a master of one."
-        </blockquote>
-      </section>
-
-      <!-- PROJECTS -->
-      <section>
-        <h2 class="section-title"><span class="title-sym">◆</span> some cool PROJECTS i made</h2>
-        <ul class="project-list">
-          <li class="project-card">
-            <div class="project-header">
-              <span class="project-title">
-                <a href="https://rayyanamer.itch.io/emberland" target="_blank" rel="noopener">Ember Light</a>
-              </span>
-              <span class="project-status">❖ Active Dev</span>
-            </div>
-            <div class="tech-tags">
-              <span class="tag-pill">Godot 4.7</span>
-              <span class="tag-pill">GDScript</span>
-              <span class="tag-pill">Stylized PSX</span>
-            </div>
-            <p class="project-desc">
-              A 3D Procedurally generated Environent based Sandbox Game with Adventure and Survival Elements.<br><br>Looking for Archive? <a href="https://rayyanamer.github.io/emberland" target="_blank" rel="noopener">Click here!</a>
-  </p>
-          </li>
-
-          <li class="project-card">
-            <div class="project-header">
-              <span class="project-title">
-                <a href="https://rayyanamer.itch.io/yamiori" target="_blank" rel="noopener">yamiori</a>
-              </span>
-              <span class="project-status">✦ Prototype</span>
-            </div>
-            <div class="tech-tags">
-              <span class="tag-pill">Trash</span>
-              <span class="tag-pill">Walking Sim</span>
-              <span class="tag-pill">Somewhat Horror</span>
-            </div>
-            <p class="project-desc">
-              A Very Simple and most unpolished Horror Game that I made using CCB Engine (ver 6.7) in the time period of 4 Days.        </p>
-          </li>
-
-          <li class="project-card">
-            <div class="project-header">
-              <span class="project-title">
-                <a href="https://rayyanamer.github.io/projects/saisc/saisc_beta8.html" target="_blank" rel="noopener">College Site</a>
-              </span>
-              <span class="project-status">◈ working</span>
-            </div>
-            <div class="tech-tags">
-              <span class="tag-pill">no idea</span>
-              <span class="tag-pill">HTML, CSS and Js</span>
-              <span class="tag-pill">Hobbyist Side Project</span>
-            </div>
-            <p class="project-desc">
-              This is an under-developmeng project that i work on in my Extra Time. Basically A Website for My College.       </p>
-          </li>
-
-          
-        </ul>
-      </section>
-
-      <!-- DEVLOG -->
-      <section>
-        <h2 class="section-title"><span class="title-sym">❯</span> DEVLOG &amp; NOTES</h2>
-        <ul class="log-list">
-          <li class="log-item">
-            <div class="log-meta">
-              <span class="meta-date">2026.01</span>
-              <span>•</span>
-              <span class="meta-tag">ESP-32</span>
-            </div>
-            <h3 class="log-title">
-              <a href="https://rayyanamer.github.io/blogs/esp32_based_quadcopter.html" target="_blank" rel="noopener">ESP32 Based Basic Flight Controller</a>
-            </h3>
-            <p class="log-summary">
-              A basic Quadcopter Flight Controller that i made for Science Expo at <strong>The Smart School Gojra</strong>.
-            </p>
-          </li>
-          
-        </ul>
-      </section>
-
-      <!-- SOCIAL LINKS -->
-      <section>
-        <h2 class="section-title"><span class="title-sym">⁕</span> CONNECT</h2>
-        <div class="social-card">
-          <ul class="social-links">
-            <li>
-              <a href="https://github.com/rayyanamer" target="_blank" rel="noopener">
-                <span class="sym">❯</span> GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://rayyanamer.itch.io" target="_blank" rel="noopener">
-                <span class="sym">❯</span> Itch.io
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/rayyan-amer-b36035437?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">
-                <span class="sym">❯</span> LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href="https://youtube.com/@RayyanAmerOG" target="_blank" rel="noopener">
-                <span class="sym">❯</span> YouTube
-              </a>
-            </li>
-            <li>
-              <a href="https://instagram.com/_rayyanamer" target="_blank" rel="noopener">
-                <span class="sym">❯</span> Instagram
-              </a>
-            </li>
-            <li>
-              <a href="mailto:muhammad.rayyan.amer@gmail.com">
-                <span class="sym">❯</span> Email
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-copyright">
-        <span>© 2026 Rayyan Amer</span>
-        <span class="footer-sep">•</span>
-        <span class="footer-note">All rights reserved</span>
-      </div>
-      <div class="footer-meta">
-        <span class="footer-note">Visitors</span>
-        <span class="footer-sep">·</span>
-        <span class="time-badge" id="visitor-count" aria-live="polite">Loading…</span>
-        <span class="footer-sep">/</span>
-        <span class="footer-note">Local Time</span>
-        <span class="footer-sep">·</span>
-        <span class="time-badge" id="live-time">PKT 00:00:00</span>
-      </div>
-    </footer>
-  </div>
-
-  <script data-goatcounter="https://rayyanamer.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-
-  <script>
+<div class="container">
+<nav aria-label="Main navigation" class="site-nav">
+<a aria-label="Rayyan Amer — Home" class="nav-brand" href="https://rayyanamer.github.io/" title="Rayyan Amer"><img alt="" aria-hidden="true" class="nav-favicon" src="https://rayyanamer.github.io/assets/icon.png"/></a>
+<ul class="nav-links">
+<li><a aria-current="page" class="active" href="https://rayyanamer.github.io/">Home</a></li>
+<li><a href="https://rayyanamer.github.io/projects.html">Projects</a></li>
+<li><a href="https://rayyanamer.github.io/blogs.html">Devlog</a></li>
+<li><a href="https://rayyanamer.github.io/contact.html">Connect</a></li>
+</ul>
+</nav>
+<!-- HEADER SECTION -->
+<header>
+<div class="header-top">
+<h1>Rayyan Amer</h1>
+<span class="handle">@rynx86</span>
+</div>
+<div class="subtitle-row">
+<span>Indie Game Developer,Tech Nerd &amp; Engineering Student</span>
+<span class="location">✦ Gojra, Punjab, Pakistan, Earth</span>
+</div>
+<div class="status-badge">
+<span class="status-dot"></span>
+<span>UPDATE! Life is genuinely cooked!</span>
+</div>
+</header>
+<main><section class="home-intro"><h2 class="section-title"><span class="title-sym">■</span> OVERVIEW</h2><p class="bio-text">Hey Stranger<br/>I'm <strong>Rayyan</strong>. A Pakistani Muslim boy who loves creating things that are cool. I am interested in software and computers, while my secondary interest falls into physical computing. That is why I am studying Pre-Engineering right now with a future goal of entering Robotics &amp; Mechatronics.</p><blockquote class="quote-block"><span class="accent-text">✦</span> "A jack of all trades is a master of none, but oftentimes better than a master of one."</blockquote></section></main>
+<!-- FOOTER -->
+<footer>
+<div class="footer-copyright">
+<span>© 2026 Rayyan Amer</span>
+<span class="footer-sep">•</span>
+<span class="footer-note">All rights reserved</span>
+</div>
+<div class="footer-meta">
+<span class="footer-note">Visitors</span>
+<span class="footer-sep">·</span>
+<span aria-live="polite" class="time-badge" id="visitor-count">Loading…</span>
+<span class="footer-sep">/</span>
+<span class="footer-note">Local Time</span>
+<span class="footer-sep">·</span>
+<span class="time-badge" id="live-time">PKT 00:00:00</span>
+</div>
+</footer>
+</div>
+<script async="" data-goatcounter="https://rayyanamer.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
+<script>
     const clockStartMs = Date.now();
 const clockStartPerf = performance.now();
 
