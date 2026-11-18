@@ -21,11 +21,10 @@
       --border: #222731;
       --border-accent: #2d3544;
       
-      /* Dual Accent Colors */
-      --accent-primary: #DDFFAF;       /* Soft Lime/Mint Accent */
+      --accent-primary: #DDFFAF;       
       --accent-primary-muted: rgba(221, 255, 175, 0.12);
       
-      --accent-secondary: #FF9F68;     /* Warm Coral/Terracotta Accent */
+      --accent-secondary: #FF9F68;     
       --accent-secondary-muted: rgba(255, 159, 104, 0.12);
       
       --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'Fira Code', monospace;
@@ -51,14 +50,12 @@
       height: 0;
     }
 
-    /* Sticky-footer flex layout ensures footer stays at bottom of viewport */
     body {
       min-height: 100vh;
       min-height: 100dvh;
       display: flex;
       flex-direction: column;
       background-color: var(--bg);
-      /* Subtle tactile dot-matrix grid with a soft top radial ambient glow */
       background-image: 
         radial-gradient(ellipse 80% 45% at 50% -10%, rgba(221, 255, 175, 0.045), transparent 70%),
         radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
@@ -75,7 +72,6 @@
       -ms-overflow-style: none;
     }
 
-    /* Ultra-subtle procedural film/paper grain overlay for tactile depth */
     body::before {
       content: "";
       position: fixed;
@@ -94,7 +90,6 @@
       flex-direction: column;
     }
 
-    /* HEADER & IDENTITY */
     header {
       margin-bottom: 3.5rem;
     }
@@ -134,7 +129,6 @@
       flex-wrap: wrap;
     }
 
-    /* NAVIGATION */
     .site-nav {
       display: flex;
       align-items: center;
@@ -218,7 +212,6 @@
       font-weight: 700;
     }
 
-    /* SECTIONS */
     main {
       display: block;
       flex: 1;
@@ -252,7 +245,6 @@
       font-size: 0.8rem;
     }
 
-    /* PROJECT CARDS */
     .project-list {
       list-style: none;
       display: grid;
@@ -283,6 +275,14 @@
       margin-bottom: 0.75rem;
     }
 
+    .project-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
     .project-title {
       font-family: var(--font-heading);
       font-weight: 700;
@@ -302,18 +302,32 @@
     }
 
     .project-title a::after {
-      content: " ↗";
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%23FF9F68' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'%3E%3C/path%3E%3Cpolyline points='15 3 21 3 21 9'%3E%3C/polyline%3E%3Cline x1='10' y1='14' x2='21' y2='3'%3E%3C/line%3E%3C/svg%3E");
       display: inline-block;
-      color: var(--accent-secondary);
-      font-family: var(--font-mono);
-      font-size: 0.75em;
-      font-weight: 400;
-      vertical-align: 0.1em;
+      margin-left: 0.25rem;
+      vertical-align: 0.12em;
       transition: transform 0.15s ease;
     }
 
     .project-title a:hover::after {
       transform: translate(2px, -2px);
+    }
+
+    .source-code-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      letter-spacing: -0.05em;
+      transition: color 0.15s ease;
+    }
+
+    .source-code-link:hover {
+      color: var(--accent-primary);
     }
 
     .project-date {
@@ -329,7 +343,6 @@
       line-height: 1.68;
     }
 
-    /* FOOTER */
     footer {
       margin-top: auto;
       padding-top: 1.75rem;
@@ -381,7 +394,6 @@
       color: var(--subtle);
     }
 
-    /* RESPONSIVE ADJUSTMENTS */
     @media (max-width: 560px) {
       body { padding: 2rem 1rem; }
       .site-nav {
@@ -439,7 +451,6 @@
 </head>
 <body>
 <div class="container">
-<!-- TOP NAVIGATION -->
 <nav aria-label="Main navigation" class="site-nav">
 <ul class="nav-links">
 <li><a href="https://rayyanamer.github.io/about.html">About</a></li>
@@ -454,7 +465,6 @@
 </ul>
 </nav>
 
-<!-- HEADER SECTION -->
 <header>
 <div class="header-top">
 <h1>Projects</h1>
@@ -465,7 +475,6 @@
 </div>
 </header>
 
-<!-- PROJECTS CATALOG -->
 <main>
 <section>
 <h2 class="section-title"><span class="title-sym">■</span> PROJECTS</h2>
@@ -474,7 +483,10 @@
 
 <li class="project-card">
 <div class="project-header">
+<div class="project-title-row">
 <h3 class="project-title"><a href="https://rayyanamer.github.io/yappify" rel="noopener noreferrer" target="_blank">Yappify</a></h3>
+<a class="source-code-link" href="https://github.com/rayyanamer/yappify" rel="noopener noreferrer" target="_blank" title="View Source Code">&lt;/&gt;</a>
+</div>
 <span class="project-date">17.11.2026</span>
 </div>
 <p class="project-desc">
@@ -485,7 +497,10 @@ Public Anonymous Chat using Firebase Backend.
 
 <li class="project-card">
 <div class="project-header">
+<div class="project-title-row">
 <h3 class="project-title"><a href="https://rayyanamer.itch.io/yamiori" rel="noopener noreferrer" target="_blank">yamiori</a></h3>
+<a class="source-code-link" href="https://github.com/rayyanamer/yamiori" rel="noopener noreferrer" target="_blank" title="View Source Code">&lt;/&gt;</a>
+</div>
 <span class="project-date">28.05.2026</span>
 </div>
 <p class="project-desc">
@@ -495,7 +510,10 @@ A simple and most unpolished horror game made in CCB.
 
 <li class="project-card">
 <div class="project-header">
+<div class="project-title-row">
 <h3 class="project-title"><a href="https://rayyanamer.itch.io/emberland" rel="noopener noreferrer" target="_blank">Emberland</a></h3>
+<a class="source-code-link" href="https://github.com/rayyanamer/emberland" rel="noopener noreferrer" target="_blank" title="View Source Code">&lt;/&gt;</a>
+</div>
 <span class="project-date">01.11.2026</span>
 </div>
 <p class="project-desc">
@@ -505,7 +523,10 @@ A 3D procedural world generation based survival game made in Godot.
 
 <li class="project-card">
 <div class="project-header">
+<div class="project-title-row">
 <h3 class="project-title"><a href="https://rayyanamer.github.io/projects/saisc/saisc_beta8.html" rel="noopener noreferrer" target="_blank">SAISC Web</a></h3>
+<a class="source-code-link" href="https://github.com/rayyanamer/saisc-web" rel="noopener noreferrer" target="_blank" title="View Source Code">&lt;/&gt;</a>
+</div>
 <span class="project-date">15.11.2026</span>
 </div>
 <p class="project-desc">
@@ -516,7 +537,6 @@ A web project for making a website for my college.
 </section>
 </main>
 
-<!-- FOOTER -->
 <footer>
 <div class="footer-copyright">
 <span>© 2026 Rayyan Amer</span>
@@ -551,11 +571,9 @@ function updateClock() {
   };
   const timeString = new Intl.DateTimeFormat('en-GB', options).format(now);
 
-  // Elapsed milliseconds since clockStartMs using high-res timer
   const elapsedPerfMs = performance.now() - clockStartPerf;
   const totalMs = clockStartMs + elapsedPerfMs;
 
-  // Extract fractional milliseconds and scale to 4-digit fractional display
   const fractionalMs = totalMs % 1000;
   const nanoseconds = Math.floor(fractionalMs * 10)
     .toString()
