@@ -229,7 +229,7 @@
     }
 
     .intro-section {
-      max-width: min(100%, 620px);
+      max-width: min(100%, 640px);
       margin: 0 auto clamp(2.5rem, 6vw, 3.75rem);
       text-align: center;
     }
@@ -258,6 +258,26 @@
 
     .bio-text .accent-coral {
       color: var(--accent-secondary);
+    }
+
+    .story-cta {
+      margin-top: 1.25rem;
+      font-size: clamp(0.78rem, 1.25vw, 0.85rem);
+      color: var(--muted);
+    }
+
+    .story-cta a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--accent-primary);
+      padding-bottom: 1px;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .story-cta a:hover,
+    .story-cta a:focus-visible {
+      color: var(--accent-secondary);
+      border-bottom-color: var(--accent-secondary);
     }
 
     /* MINIMAL STATS & STACK */
@@ -510,7 +530,10 @@
 <section class="intro-section">
 <p class="welcome-line">Glad you stopped by.</p>
 <p class="bio-text">
-I'm <strong>Rayyan</strong>, a 17y/o builder and Pre-Engineering student who likes VideoGame Development and working on Physical Systems. Most of my time goes into <span class="accent-mint">IndieGame Dev and Studying</span>, <span class="accent-mint">brainstorming</span>, and <span class="accent-coral">microcontrollers and physical builds</span>, all leading toward a future in Robotics and Mechatronics.
+I'm <strong>Rayyan Amer</strong>, a 17y/o <span class="accent-mint">FSc Pre-Engineering</span> student based in <span class="accent-coral">Gojra, Pakistan</span>. Most of what I do revolves around computers, tinkering with old hardware, and figuring out how stuff actually works—whether that's <span class="accent-mint">indie game dev</span>, <span class="accent-mint">Linux setups</span>, or <span class="accent-coral">microcontrollers or physical circuits</span> on my way toward Robotics &amp; Mechatronics.
+</p>
+<p class="story-cta">
+I don't have everything figured out yet—still learning and building. <a href="https://rayyanamer.github.io/about.html">Read the full story →</a>
 </p>
 </section>
 
@@ -577,7 +600,7 @@ I'm <strong>Rayyan</strong>, a 17y/o builder and Pre-Engineering student who lik
 </svg>
 <span>Track</span>
 </span>
-<span class="stat-value">FSc Pre-Eng (11th)</span>
+<span class="stat-value">FSc Pre-Eng (SAISC)</span>
 </div>
 <div class="stat-item">
 <span class="stat-head">
@@ -597,7 +620,7 @@ I'm <strong>Rayyan</strong>, a 17y/o builder and Pre-Engineering student who lik
 </svg>
 <span>Base</span>
 </span>
-<span class="stat-value">Pakistan</span>
+<span class="stat-value">Gojra, Pakistan</span>
 </div>
 </div>
 </div>
