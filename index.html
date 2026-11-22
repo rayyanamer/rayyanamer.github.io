@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="https://rayyanamer.github.io/assets/icon.png" rel="icon" type="image/png"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Rayyan Amer (@rynx86)</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<style>
+  <link href="https://rayyanamer.github.io/assets/icon.png" rel="icon" type="image/png" />
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Rayyan Amer (@rynx86)</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet" />
+  <style>
     :root {
       --bg: #0b0c0e;
       --bg-surface: #14171d;
       --bg-surface-hover: #1b1f28;
+      --bg-elevated: #111419;
       --text-main: #d4d8e0;
       --text-heading: #f0f3f8;
       --muted: #8e96a4;
@@ -22,12 +23,16 @@
 
       --accent-primary: #DDFFAF;
       --accent-primary-muted: rgba(221, 255, 175, 0.12);
+      --accent-primary-glow: rgba(221, 255, 175, 0.24);
 
       --accent-secondary: #FF9F68;
       --accent-secondary-muted: rgba(255, 159, 104, 0.12);
 
       --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'Fira Code', monospace;
       --font-heading: 'Space Mono', var(--font-mono);
+      --radius-sm: 8px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
     }
 
     * {
@@ -49,7 +54,7 @@
       height: 0;
     }
 
-    /* Sticky-footer flex layout ensures footer stays at bottom of viewport */
+    /* Sticky footer flex layout ensures footer stays at bottom of viewport */
     body {
       min-height: 100vh;
       min-height: 100dvh;
@@ -101,7 +106,7 @@
       margin-bottom: clamp(2.5rem, 6vw, 4rem);
       background: rgba(20, 23, 29, 0.82);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: var(--radius-md);
       backdrop-filter: blur(10px);
     }
 
@@ -124,7 +129,7 @@
       border-radius: 7px;
       overflow: hidden;
       text-decoration: none;
-      filter: drop-shadow(0 0 6px rgba(221, 255, 175, 0.24));
+      filter: drop-shadow(0 0 6px var(--accent-primary-glow));
       transition: filter 0.2s ease, transform 0.2s ease;
     }
 
@@ -222,7 +227,7 @@
       letter-spacing: 0.04em;
     }
 
-    /* MINIMAL INTRO */
+    /* MAIN AND INTRO */
     main {
       display: block;
       flex: 1;
@@ -280,18 +285,27 @@
       border-bottom-color: var(--accent-secondary);
     }
 
-    /* MINIMAL STATS & STACK */
+    /* SHARED SECTION STRUCTURE */
     .meta-section {
-      max-width: min(100%, 680px);
+      max-width: min(100%, 720px);
       margin: 0 auto clamp(2.5rem, 6vw, 3.75rem);
       display: flex;
       flex-direction: column;
-      gap: clamp(1.5rem, 3.5vw, 2.25rem);
+      gap: clamp(1.75rem, 3.8vw, 2.5rem);
     }
 
     .meta-group {
       border-top: 1px solid var(--border);
-      padding-top: clamp(1.1rem, 2.5vw, 1.4rem);
+      padding-top: clamp(1.2rem, 2.5vw, 1.5rem);
+    }
+
+    .section-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin-bottom: clamp(0.75rem, 1.7vw, 1rem);
     }
 
     .meta-label {
@@ -304,7 +318,11 @@
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--accent-secondary);
-      margin-bottom: clamp(0.6rem, 1.5vw, 0.85rem);
+    }
+
+    .section-subnote {
+      font-size: 0.72rem;
+      color: var(--muted);
     }
 
     .icon-svg {
@@ -318,42 +336,49 @@
       stroke-linejoin: round;
     }
 
-    .meta-line {
-      font-size: clamp(0.82rem, 1.35vw, 0.9rem);
-      color: var(--text-main);
-      line-height: 1.85;
-    }
-
-    .meta-line .sep {
-      color: var(--subtle);
-      margin: 0 clamp(0.35rem, 1vw, 0.6rem);
-    }
-
-    .meta-line .item-mint {
-      color: var(--accent-primary);
-    }
-
-    .meta-line .item-muted {
-      color: var(--muted);
-    }
-
-    .stats-row {
+    /* ENHANCED STATS SECTION */
+    .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 135px), 1fr));
-      gap: clamp(1rem, 2.5vw, 1.75rem);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
     }
 
-    .stat-item {
+    .stat-card {
+      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
+      justify-content: space-between;
+      gap: 0.55rem;
+      padding: 0.95rem 1rem;
+      background: rgba(20, 23, 29, 0.72);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .stat-card:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-1px);
+    }
+
+    .stat-card--highlight {
+      border-color: rgba(221, 255, 175, 0.22);
+      background: linear-gradient(180deg, rgba(221, 255, 175, 0.04) 0%, rgba(20, 23, 29, 0.78) 100%);
+    }
+
+    .stat-top {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.5rem;
     }
 
     .stat-head {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: clamp(0.7rem, 1.1vw, 0.75rem);
+      gap: 0.45rem;
+      font-size: 0.72rem;
       color: var(--muted);
       letter-spacing: 0.04em;
     }
@@ -364,16 +389,123 @@
       color: var(--accent-primary);
     }
 
+    .stat-badge {
+      font-size: 0.64rem;
+      padding: 0.12rem 0.45rem;
+      border-radius: 999px;
+      background: var(--accent-primary-muted);
+      color: var(--accent-primary);
+      border: 1px solid rgba(221, 255, 175, 0.18);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .stat-badge--coral {
+      background: var(--accent-secondary-muted);
+      color: var(--accent-secondary);
+      border-color: rgba(255, 159, 104, 0.2);
+    }
+
     .stat-value {
       font-family: var(--font-heading);
-      font-size: clamp(0.95rem, 1.6vw, 1.08rem);
+      font-size: clamp(0.95rem, 1.55vw, 1.08rem);
       font-weight: 700;
       color: var(--text-heading);
+      line-height: 1.3;
+    }
+
+    .stat-detail {
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .stat-note-inline {
+      color: var(--accent-primary);
+      font-weight: 500;
+    }
+
+    .stat-note-inline--coral {
+      color: var(--accent-secondary);
+      font-weight: 500;
+    }
+
+    /* MY DEFAULTS SECTION */
+    .defaults-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .default-row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.25rem;
+      padding: 0.8rem 0.95rem;
+      background: rgba(20, 23, 29, 0.65);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: border-color 0.18s ease, background-color 0.18s ease;
+    }
+
+    .default-row:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--border-accent);
+    }
+
+    .default-key {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .default-val {
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--accent-primary);
+      line-height: 1.4;
+    }
+
+    .default-val--coral {
+      color: var(--accent-secondary);
+    }
+
+    /* IMAGE GALLERY SECTION */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .gallery-card {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 112px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .gallery-card:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--border-accent);
+    }
+
+    .gallery-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     /* RANDOM QUOTE */
     .quote-section {
-      max-width: min(100%, 680px);
+      max-width: min(100%, 720px);
       margin: clamp(1rem, 2.2vw, 1.5rem) auto 2.5rem;
       padding-top: clamp(1.1rem, 2.5vw, 1.4rem);
       border-top: 1px solid var(--border);
@@ -448,6 +580,17 @@
     }
 
     /* RESPONSIVE ADJUSTMENTS */
+    @media (max-width: 680px) {
+      .stats-grid,
+      .defaults-list {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     @media (max-width: 560px) {
       body { padding: 2rem 1rem; }
       .site-nav {
@@ -462,6 +605,9 @@
       }
       .nav-links { gap: clamp(0.65rem, 3vw, 1.15rem); }
       .nav-links a { font-size: clamp(0.62rem, 2.4vw, 0.72rem); }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
       footer { gap: 0.55rem; }
       .footer-meta {
         width: 100%;
@@ -493,274 +639,400 @@
       .nav-links a { font-size: 0.82rem; }
       footer { margin-top: auto; }
     }
-</style>
+  </style>
 </head>
 <body>
-<div class="container">
-<!-- TOP NAVIGATION -->
-<nav aria-label="Main navigation" class="site-nav">
-<ul class="nav-links">
-<li><a href="https://rayyanamer.github.io/about.html">About</a></li>
-<li><a href="https://rayyanamer.github.io/contact.html">Connect</a></li>
-</ul>
-<span aria-hidden="true" class="nav-sep">•</span>
-<a aria-current="page" aria-label="Rayyan Amer Home" class="nav-brand" href="https://rayyanamer.github.io/" title="Rayyan Amer"><img alt="" aria-hidden="true" class="nav-favicon" src="https://rayyanamer.github.io/assets/icon.png"/></a>
-<span aria-hidden="true" class="nav-sep">•</span>
-<ul class="nav-links">
-<li><a href="https://rayyanamer.github.io/blogs.html">Blogs</a></li>
-<li><a href="https://rayyanamer.github.io/projects.html">Projects</a></li>
-</ul>
-</nav>
+  <div class="container">
+    <!-- TOP NAVIGATION -->
+    <nav aria-label="Main navigation" class="site-nav">
+      <ul class="nav-links">
+        <li><a href="https://rayyanamer.github.io/about.html">About</a></li>
+        <li><a href="https://rayyanamer.github.io/contact.html">Connect</a></li>
+      </ul>
+      <span aria-hidden="true" class="nav-sep">•</span>
+      <a aria-current="page" aria-label="Rayyan Amer Home" class="nav-brand" href="https://rayyanamer.github.io/" title="Rayyan Amer">
+        <img alt="" aria-hidden="true" class="nav-favicon" src="https://rayyanamer.github.io/assets/icon.png" />
+      </a>
+      <span aria-hidden="true" class="nav-sep">•</span>
+      <ul class="nav-links">
+        <li><a href="https://rayyanamer.github.io/blogs.html">Blogs</a></li>
+        <li><a href="https://rayyanamer.github.io/projects.html">Projects</a></li>
+      </ul>
+    </nav>
 
-<!-- HEADER / NAME HIGHLIGHT -->
-<header>
-<div class="welcome-tag">
-<svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
-<polyline points="4 17 10 11 4 5"/>
-<line x1="12" y1="19" x2="20" y2="19"/>
-</svg>
-<span>Welcome</span>
-</div>
-<h1>Rayyan <span>Amer</span></h1>
-<span class="handle">@rynx86</span>
-</header>
+    <!-- HEADER / NAME HIGHLIGHT -->
+    <header>
+      <div class="welcome-tag">
+        <svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
+          <polyline points="4 17 10 11 4 5" />
+          <line x1="12" y1="19" x2="20" y2="19" />
+        </svg>
+        <span>Welcome</span>
+      </div>
+      <h1>Rayyan <span>Amer</span></h1>
+      <span class="handle">@rynx86</span>
+    </header>
 
-<!-- MINIMAL INTRO -->
-<main>
-<section class="intro-section">
-<p class="welcome-line">Glad you stopped by.</p>
-<p class="bio-text">
-I'm <strong>Rayyan Amer</strong>, a 17y/o <span class="accent-mint">FSc Pre-Engineering</span> student based in <span class="accent-coral">Gojra, Pakistan</span>. Most of what I do revolves around computers, tinkering with old hardware, and figuring out how stuff actually works—whether that's <span class="accent-mint">indie game dev</span>, <span class="accent-mint">Linux setups</span>, or <span class="accent-coral">microcontrollers or physical circuits</span> on my way toward Robotics &amp; Mechatronics.
-</p>
-<p class="story-cta">
-I don't have everything figured out yet—still learning and building. <a href="https://rayyanamer.github.io/about.html">Read the full story →</a>
-</p>
-</section>
+    <!-- MAIN CONTENT -->
+    <main>
+      <section class="intro-section">
+        <p class="welcome-line">Glad you stopped by.</p>
+        <p class="bio-text">
+          I'm <strong>Rayyan Amer</strong>, a 17 years old <span class="accent-mint">FSc Pre Engineering</span> student based in <span class="accent-coral">Gojra, Pakistan</span>. Most of what I do revolves around computers, tinkering with old hardware, and figuring out how stuff actually works, whether that's <span class="accent-mint">indie game dev</span>, <span class="accent-mint">Linux setups</span>, or <span class="accent-coral">microcontrollers or physical circuits</span> on my way toward Robotics &amp; Mechatronics.
+        </p>
+        <p class="story-cta">
+          I don't have everything figured out yet, still learning and building. <a href="https://rayyanamer.github.io/about.html">Read the full story →</a>
+        </p>
+      </section>
 
-<section class="meta-section" aria-label="Tech stack, software and stats">
-<div class="meta-group">
-<div class="meta-label">
-<svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
-<polyline points="16 18 22 12 16 6"/>
-<polyline points="8 6 2 12 8 18"/>
-</svg>
-<span>Tech Stack</span>
-</div>
-<p class="meta-line">
-<span class="item-mint">GDScript</span><span class="sep">/</span><span class="item-mint">C++</span><span class="sep">/</span><span class="item-mint">GLSL Shaders</span><span class="sep">/</span><span class="item-mint">HTML</span><span class="sep">/</span><span class="item-mint">CSS</span><span class="sep">/</span><span class="item-mint">JavaScript</span><span class="sep">/</span><span class="item-mint">Python</span>
-</p>
-</div>
+      <section class="meta-section" aria-label="Stats, defaults, and image gallery">
+        <!-- ENHANCED STATS SECTION -->
+        <div class="meta-group" aria-labelledby="stats-heading">
+          <div class="section-header-row">
+            <div class="meta-label" id="stats-heading">
+              <svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg>
+              <span>Stats</span>
+            </div>
+            <span class="section-subnote" id="stats-academic-status">FSc Pre-Eng • 2026</span>
+          </div>
 
-<div class="meta-group">
-<div class="meta-label">
-<svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
-<rect x="4" y="4" width="16" height="16" rx="2"/>
-<rect x="9" y="9" width="6" height="6"/>
-<line x1="9" y1="1" x2="9" y2="4"/>
-<line x1="15" y1="1" x2="15" y2="4"/>
-<line x1="9" y1="20" x2="9" y2="23"/>
-<line x1="15" y1="20" x2="15" y2="23"/>
-<line x1="20" y1="9" x2="23" y2="9"/>
-<line x1="20" y1="14" x2="23" y2="14"/>
-<line x1="1" y1="9" x2="4" y2="9"/>
-<line x1="1" y1="14" x2="4" y2="14"/>
-</svg>
-<span>Software &amp; Hardware</span>
-</div>
-<p class="meta-line">
-<span class="item-muted">Godot 4</span><span class="sep">·</span><span class="item-muted">CCB</span><span class="sep">·</span><span class="item-muted">Debian &amp; Arch Linux</span><span class="sep">·</span><span class="item-muted">FL Studio</span><span class="sep">·</span><span class="item-muted">ESP32 &amp; MPU6050</span>
-</p>
-</div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-top">
+                <span class="stat-head">
+                  <svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  <span>Age</span>
+                </span>
+              </div>
+              <div class="stat-value" id="dynamic-age">17y · 18 in Sep 2027</div>
+              <div class="stat-detail">
+                Building foundations in math, physics &amp; systems, <span class="stat-note-inline">17 yrs · Sep 2027</span>.
+              </div>
+            </div>
 
-<div class="meta-group">
-<div class="meta-label">
-<svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
-<line x1="18" y1="20" x2="18" y2="10"/>
-<line x1="12" y1="20" x2="12" y2="4"/>
-<line x1="6" y1="20" x2="6" y2="14"/>
-</svg>
-<span>Stats</span>
-</div>
-<div class="stats-row">
-<div class="stat-item">
-<span class="stat-head">
-<svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
-<circle cx="12" cy="12" r="10"/>
-<polyline points="12 6 12 12 16 14"/>
-</svg>
-<span>Age</span>
-</span>
-<span class="stat-value">17</span>
-</div>
-<div class="stat-item">
-<span class="stat-head">
-<svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
-<path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-<path d="M6 12v5c3 3 9 3 12 0v-5"/>
-</svg>
-<span>Track</span>
-</span>
-<span class="stat-value">FSc Pre-Eng (SAISC)</span>
-</div>
-<div class="stat-item">
-<span class="stat-head">
-<svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
-<circle cx="12" cy="12" r="3"/>
-<path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-</svg>
-<span>Target Field</span>
-</span>
-<span class="stat-value">Robotics &amp; Mechatronics</span>
-</div>
-<div class="stat-item">
-<span class="stat-head">
-<svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
-<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-<circle cx="12" cy="10" r="3"/>
-</svg>
-<span>Base</span>
-</span>
-<span class="stat-value">Gojra, Pakistan</span>
-</div>
-</div>
-</div>
-</section>
+            <div class="stat-card">
+              <div class="stat-top">
+                <span class="stat-head">
+                  <svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                  </svg>
+                  <span>Track</span>
+                </span>
+              </div>
+              <div class="stat-value">FSc Pre Engineering</div>
+              <div class="stat-detail">
+                Calculus, mechanics &amp; electromagnetism daily, <span class="stat-note-inline--coral">SAISC · Math · Phy · Chem</span>.
+              </div>
+            </div>
 
-<section class="quote-section" aria-label="Motivation Corner">
-<div class="meta-label">
-<svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
-<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-</svg>
-<span>Motivation Corner</span>
-</div>
-<p class="quote-line" id="random-quote">Fetching a quote…</p>
-<span class="quote-author" id="random-quote-author"></span>
-</section>
-</main>
+            <div class="stat-card stat-card--highlight">
+              <div class="stat-top">
+                <span class="stat-head">
+                  <svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                  </svg>
+                  <span>Target Field</span>
+                </span>
+              </div>
+              <div class="stat-value">Robotics &amp; Mechatronics</div>
+              <div class="stat-detail">
+                Bridging embedded firmware, sensors &amp; motion, <span class="stat-note-inline">Goal · Controls &amp; MCU</span>.
+              </div>
+            </div>
 
-<!-- FOOTER -->
-<footer>
-<div class="footer-copyright">
-<span>© 2026 Rayyan Amer</span>
-<span class="footer-sep">•</span>
-<span class="footer-note">All rights reserved</span>
-</div>
-<div class="footer-meta">
-<span class="footer-note">Visitors</span>
-<span class="footer-sep">·</span>
-<span aria-live="polite" class="time-badge" id="visitor-count">Loading…</span>
-<span class="footer-sep">/</span>
-<span class="footer-note">Local Time</span>
-<span class="footer-sep">·</span>
-<span class="time-badge" id="live-time">PKT 00:00:00</span>
-</div>
-</footer>
-</div>
+            <div class="stat-card">
+              <div class="stat-top">
+                <span class="stat-head">
+                  <svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <span>Base</span>
+                </span>
+              </div>
+              <div class="stat-value">Gojra, Pakistan</div>
+              <div class="stat-detail">
+                Tinkering on a budget with salvaged parts, <span class="stat-note-inline--coral">PKT +05:00 · Punjab, PK</span>.
+              </div>
+            </div>
+          </div>
+        </div>
 
-<script async="" data-goatcounter="https://rayyanamer.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
-<script>
-const clockStartMs = Date.now();
-const clockStartPerf = performance.now();
+        <!-- MY DEFAULTS SECTION -->
+        <div class="meta-group" aria-labelledby="defaults-heading">
+          <div class="section-header-row">
+            <div class="meta-label" id="defaults-heading">
+              <svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+              </svg>
+              <span>My Defaults</span>
+            </div>
+            <span class="section-subnote">Daily picks &amp; go to tools</span>
+          </div>
 
-function updateClock() {
-  const now = new Date();
-  const options = {
-    timeZone: 'Asia/Karachi',
-    hour12: false,
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit'
-  };
-  const timeString = new Intl.DateTimeFormat('en-GB', options).format(now);
+          <div class="defaults-list">
+            <div class="default-row">
+              <div class="default-key">OS &amp; Shell</div>
+              <div class="default-val">Arch &amp; Debian Linux · zsh</div>
+            </div>
 
-  const elapsedPerfMs = performance.now() - clockStartPerf;
-  const totalMs = clockStartMs + elapsedPerfMs;
+            <div class="default-row">
+              <div class="default-key">Game Engine</div>
+              <div class="default-val default-val--coral">Godot 4 + GDScript</div>
+            </div>
 
-  const fractionalMs = totalMs % 1000;
-  const nanoseconds = Math.floor(fractionalMs * 10)
-    .toString()
-    .padStart(4, '5');
+            <div class="default-row">
+              <div class="default-key">Systems &amp; Code</div>
+              <div class="default-val">C++ · Python · GLSL</div>
+            </div>
 
-  const timeElem = document.getElementById('live-time');
-  if (timeElem) {
-    timeElem.textContent = `PKT ${timeString}.${nanoseconds}`;
-  }
-}
+            <div class="default-row">
+              <div class="default-key">Hardware Bench</div>
+              <div class="default-val default-val--coral">ESP32 + MPU6050</div>
+            </div>
 
-function tick() {
-  updateClock();
-  requestAnimationFrame(tick);
-}
+            <div class="default-row">
+              <div class="default-key">Audio &amp; Creative</div>
+              <div class="default-val">FL Studio + CCB</div>
+            </div>
 
-updateClock();
-requestAnimationFrame(tick);
+            <div class="default-row">
+              <div class="default-key">Web &amp; Notes</div>
+              <div class="default-val default-val--coral">Plain HTML, CSS, JS + Markdown</div>
+            </div>
+          </div>
+        </div>
 
-async function updateVisitorCount() {
-  const countElement = document.getElementById('visitor-count');
-  if (!countElement) return;
+        <!-- IMAGE GALLERY SECTION -->
+        <div class="meta-group" aria-labelledby="gallery-heading">
+          <div class="section-header-row">
+            <div class="meta-label" id="gallery-heading">
+              <svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              <span>Image Gallery</span>
+            </div>
+          </div>
 
-  try {
-    const response = await fetch(
-      'https://rayyanamer.goatcounter.com/counter/TOTAL.json',
-      { cache: 'no-store' }
-    );
+          <div class="gallery-grid" id="gallery-grid">
+            <figure class="gallery-card">
+              <img
+                class="gallery-photo"
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80"
+                alt="Circuit board and electronics hardware"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/600x300/14171d/DDFFAF?text=Circuit+Board';"
+              />
+            </figure>
 
-    if (!response.ok) {
-      throw new Error('Visitor count unavailable');
+            <figure class="gallery-card">
+              <img
+                class="gallery-photo"
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80"
+                alt="Code editor on a dark monitor"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/600x300/14171d/DDFFAF?text=Code+Setup';"
+              />
+            </figure>
+
+            <figure class="gallery-card">
+              <img
+                class="gallery-photo"
+                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80"
+                alt="Engineering workbench and robotics prototype"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/600x300/14171d/FF9F68?text=Workbench';"
+              />
+            </figure>
+
+            <figure class="gallery-card">
+              <img
+                class="gallery-photo"
+                src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=600&q=80"
+                alt="Microcontroller components and wiring"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/600x300/14171d/FF9F68?text=Microcontrollers';"
+              />
+            </figure>
+
+            <figure class="gallery-card">
+              <img
+                class="gallery-photo"
+                src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=600&q=80"
+                alt="Audio production studio setup"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/600x300/14171d/DDFFAF?text=Audio+Studio';"
+              />
+            </figure>
+
+            <figure class="gallery-card">
+              <img
+                class="gallery-photo"
+                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80"
+                alt="Laptop workspace for programming and building"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/600x300/14171d/FF9F68?text=Workspace';"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- RANDOM QUOTE -->
+      <section class="quote-section" aria-label="Motivation Corner">
+        <div class="meta-label">
+          <svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+          </svg>
+          <span>Motivation Corner</span>
+        </div>
+        <p class="quote-line" id="random-quote">Fetching a quote…</p>
+        <span class="quote-author" id="random-quote-author"></span>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-copyright">
+        <span>© 2026 Rayyan Amer</span>
+        <span class="footer-sep">•</span>
+        <span class="footer-note">All rights reserved</span>
+      </div>
+      <div class="footer-meta">
+        <span class="footer-note">Visitors</span>
+        <span class="footer-sep">·</span>
+        <span aria-live="polite" class="time-badge" id="visitor-count">Loading…</span>
+        <span class="footer-sep">•</span>
+        <span class="footer-note">Local Time</span>
+        <span class="footer-sep">·</span>
+        <span class="time-badge" id="live-time">PKT 00:00:00</span>
+      </div>
+    </footer>
+  </div>
+
+  <script async="" data-goatcounter="https://rayyanamer.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
+  <script>
+    /* Live PKT clock with high resolution elapsed offset */
+    const clockStartMs = Date.now();
+    const clockStartPerf = performance.now();
+
+    function updateClock() {
+      try {
+        const now = new Date();
+        const options = {
+          timeZone: 'Asia/Karachi',
+          hour12: false,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        };
+        const timeString = new Intl.DateTimeFormat('en-GB', options).format(now);
+
+        const elapsedPerfMs = performance.now() - clockStartPerf;
+        const totalMs = clockStartMs + elapsedPerfMs;
+
+        const fractionalMs = totalMs % 1000;
+        const nanoseconds = Math.floor(fractionalMs * 10)
+          .toString()
+          .padStart(4, '5');
+
+        const timeElem = document.getElementById('live-time');
+        if (timeElem) {
+          timeElem.textContent = `PKT ${timeString}.${nanoseconds}`;
+        }
+      } catch (err) {
+        console.error('Clock update error:', err);
+      }
     }
 
-    const data = await response.json();
-
-    if (typeof data.count !== 'string' && typeof data.count !== 'number') {
-      throw new Error('Invalid visitor count');
+    function tick() {
+      updateClock();
+      requestAnimationFrame(tick);
     }
 
-    countElement.textContent = String(data.count);
-  } catch (error) {
-    console.error('Could not load the GoatCounter total:', error);
-    countElement.textContent = '—';
-  }
-}
+    updateClock();
+    requestAnimationFrame(tick);
 
-updateVisitorCount();
+    /* Fetch GoatCounter visitor total safely */
+    async function updateVisitorCount() {
+      const countElement = document.getElementById('visitor-count');
+      if (!countElement) return;
 
-const fallbackQuotes = [
-  { text: 'Simplicity is about subtracting the obvious and adding the meaningful.', author: 'John Maeda' },
-  { text: 'First, solve the problem. Then, write the code.', author: 'John Johnson' },
-  { text: 'The best way to predict the future is to invent it.', author: 'Alan Kay' },
-  { text: 'Make it work, make it right, make it fast.', author: 'Kent Beck' },
-  { text: 'Programs must be written for people to read, and only incidentally for machines to execute.', author: 'Harold Abelson' },
-  { text: 'Small steps every day compound into real craft.', author: 'Rayyan Amer' }
-];
+      try {
+        const response = await fetch(
+          'https://rayyanamer.goatcounter.com/counter/TOTAL.json',
+          { cache: 'no-store' }
+        );
 
-async function updateRandomQuote() {
-  const quoteEl = document.getElementById('random-quote');
-  const authorEl = document.getElementById('random-quote-author');
-  if (!quoteEl || !authorEl) return;
+        if (!response.ok) {
+          throw new Error('Visitor count unavailable');
+        }
 
-  try {
-    const cacheBust = Date.now();
-    const response = await fetch(`https://dummyjson.com/quotes/random?_=${cacheBust}`, {
-      cache: 'no-store'
-    });
-    if (!response.ok) {
-      throw new Error('Quote request failed');
+        const data = await response.json();
+
+        if (typeof data.count !== 'string' && typeof data.count !== 'number') {
+          throw new Error('Invalid visitor count');
+        }
+
+        countElement.textContent = String(data.count);
+      } catch (error) {
+        console.error('Could not load the GoatCounter total:', error);
+        countElement.textContent = '—';
+      }
     }
-    const payload = await response.json();
-    const entry = Array.isArray(payload) ? payload[0] : payload;
-    if (!entry || !entry.quote) {
-      throw new Error('Invalid quote payload');
-    }
-    quoteEl.textContent = `“${entry.quote}”`;
-    authorEl.textContent = entry.author ? `— ${entry.author}` : '';
-  } catch (error) {
-    const pick = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
-    quoteEl.textContent = `“${pick.text}”`;
-    authorEl.textContent = pick.author ? `— ${pick.author}` : '';
-  }
-}
 
-updateRandomQuote();
-</script>
+    updateVisitorCount();
+
+    /* Motivation quote fetcher with local fallback array */
+    const fallbackQuotes = [
+      { text: 'Simplicity is about subtracting the obvious and adding the meaningful.', author: 'John Maeda' },
+      { text: 'First, solve the problem. Then, write the code.', author: 'John Johnson' },
+      { text: 'The best way to predict the future is to invent it.', author: 'Alan Kay' },
+      { text: 'Make it work, make it right, make it fast.', author: 'Kent Beck' },
+      { text: 'Programs must be written for people to read, and only incidentally for machines to execute.', author: 'Harold Abelson' },
+      { text: 'Small steps every day compound into real craft.', author: 'Rayyan Amer' }
+    ];
+
+    async function updateRandomQuote() {
+      const quoteEl = document.getElementById('random-quote');
+      const authorEl = document.getElementById('random-quote-author');
+      if (!quoteEl || !authorEl) return;
+
+      try {
+        const cacheBust = Date.now();
+        const response = await fetch(`https://dummyjson.com/quotes/random?_=${cacheBust}`, {
+          cache: 'no-store'
+        });
+        if (!response.ok) {
+          throw new Error('Quote request failed');
+        }
+        const payload = await response.json();
+        const entry = Array.isArray(payload) ? payload[0] : payload;
+        if (!entry || !entry.quote) {
+          throw new Error('Invalid quote payload');
+        }
+        quoteEl.textContent = `“${entry.quote}”`;
+        authorEl.textContent = entry.author ? `— ${entry.author}` : '';
+      } catch (error) {
+        const pick = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+        quoteEl.textContent = `“${pick.text}”`;
+        authorEl.textContent = pick.author ? `— ${pick.author}` : '';
+      }
+    }
+
+    updateRandomQuote();
+  </script>
 </body>
 </html>
