@@ -117,25 +117,44 @@
       user-select: none;
     }
 
+    /* Underlined logo link instead of drop-shadow glow */
     .nav-brand {
+      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex: 0 0 auto;
       width: clamp(30px, 4vw, 36px);
       height: clamp(30px, 4vw, 36px);
-      padding: 0;
+      padding: 2px;
       border: 0;
-      border-radius: 7px;
-      overflow: hidden;
+      border-radius: 6px;
       text-decoration: none;
-      filter: drop-shadow(0 0 6px var(--accent-primary-glow));
-      transition: filter 0.2s ease, transform 0.2s ease;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-brand::after {
+      content: "";
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      bottom: -5px;
+      height: 2px;
+      border-radius: 2px;
+      background-color: var(--accent-primary);
+      opacity: 0.75;
+      transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .nav-brand[aria-current="page"]::after,
+    .nav-brand:hover::after,
+    .nav-brand:focus-visible::after {
+      opacity: 1;
+      transform: scaleX(1.08);
     }
 
     .nav-brand:hover,
     .nav-brand:focus-visible {
-      filter: drop-shadow(0 0 11px rgba(221, 255, 175, 0.55));
       transform: translateY(-1px);
     }
 
@@ -143,6 +162,7 @@
       display: block;
       width: 100%;
       height: 100%;
+      border-radius: 5px;
       object-fit: contain;
     }
 
@@ -389,23 +409,6 @@
       color: var(--accent-primary);
     }
 
-    .stat-badge {
-      font-size: 0.64rem;
-      padding: 0.12rem 0.45rem;
-      border-radius: 999px;
-      background: var(--accent-primary-muted);
-      color: var(--accent-primary);
-      border: 1px solid rgba(221, 255, 175, 0.18);
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-    }
-
-    .stat-badge--coral {
-      background: var(--accent-secondary-muted);
-      color: var(--accent-secondary);
-      border-color: rgba(255, 159, 104, 0.2);
-    }
-
     .stat-value {
       font-family: var(--font-heading);
       font-size: clamp(0.95rem, 1.55vw, 1.08rem);
@@ -470,37 +473,6 @@
 
     .default-val--coral {
       color: var(--accent-secondary);
-    }
-
-    /* IMAGE GALLERY SECTION */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.8rem;
-    }
-
-    .gallery-card {
-      position: relative;
-      display: block;
-      width: 100%;
-      height: 112px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      transition: border-color 0.2s ease, background-color 0.2s ease;
-    }
-
-    .gallery-card:hover {
-      background: var(--bg-surface-hover);
-      border-color: var(--border-accent);
-    }
-
-    .gallery-photo {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
 
     /* RANDOM QUOTE */
@@ -580,14 +552,10 @@
     }
 
     /* RESPONSIVE ADJUSTMENTS */
-    @media (max-width: 680px) {
+    @media (max-width: 720px) {
       .stats-grid,
       .defaults-list {
         grid-template-columns: 1fr;
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -601,13 +569,10 @@
       .nav-brand {
         width: 30px;
         height: 30px;
-        padding: 0;
       }
       .nav-links { gap: clamp(0.65rem, 3vw, 1.15rem); }
       .nav-links a { font-size: clamp(0.62rem, 2.4vw, 0.72rem); }
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
+
       footer { gap: 0.55rem; }
       .footer-meta {
         width: 100%;
@@ -685,7 +650,7 @@
         </p>
       </section>
 
-      <section class="meta-section" aria-label="Stats, defaults, and image gallery">
+      <section class="meta-section" aria-label="Stats and defaults">
         <!-- ENHANCED STATS SECTION -->
         <div class="meta-group" aria-labelledby="stats-heading">
           <div class="section-header-row">
@@ -809,82 +774,6 @@
               <div class="default-key">Web &amp; Notes</div>
               <div class="default-val default-val--coral">HTML, CSS, JS + Markdown</div>
             </div>
-          </div>
-        </div>
-
-        <!-- IMAGE GALLERY SECTION -->
-        <div class="meta-group" aria-labelledby="gallery-heading">
-          <div class="section-header-row">
-            <div class="meta-label" id="gallery-heading">
-              <svg aria-hidden="true" class="icon-svg" viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg>
-              <span>Image Gallery</span>
-            </div>
-          </div>
-
-          <div class="gallery-grid" id="gallery-grid">
-            <figure class="gallery-card">
-              <img
-                class="gallery-photo"
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80"
-                alt="Circuit board and electronics hardware"
-                loading="lazy"
-                onerror="this.onerror=null;this.src='https://placehold.co/600x300/14171d/DDFFAF?text=Circuit+Board';"
-              />
-            </figure>
-
-            <figure class="gallery-card">
-              <img
-                class="gallery-photo"
-                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80"
-                alt="Code editor on a dark monitor"
-                loading="lazy"
-                onerror="this.onerror=null;this.src='https://placehold.co/600x300/14171d/DDFFAF?text=Code+Setup';"
-              />
-            </figure>
-
-            <figure class="gallery-card">
-              <img
-                class="gallery-photo"
-                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80"
-                alt="Engineering workbench and robotics prototype"
-                loading="lazy"
-                onerror="this.onerror=null;this.src='https://placehold.co/600x300/14171d/FF9F68?text=Workbench';"
-              />
-            </figure>
-
-            <figure class="gallery-card">
-              <img
-                class="gallery-photo"
-                src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=600&q=80"
-                alt="Microcontroller components and wiring"
-                loading="lazy"
-                onerror="this.onerror=null;this.src='https://placehold.co/600x300/14171d/FF9F68?text=Microcontrollers';"
-              />
-            </figure>
-
-            <figure class="gallery-card">
-              <img
-                class="gallery-photo"
-                src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=600&q=80"
-                alt="Audio production studio setup"
-                loading="lazy"
-                onerror="this.onerror=null;this.src='https://placehold.co/600x300/14171d/DDFFAF?text=Audio+Studio';"
-              />
-            </figure>
-
-            <figure class="gallery-card">
-              <img
-                class="gallery-photo"
-                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80"
-                alt="Laptop workspace for programming and building"
-                loading="lazy"
-                onerror="this.onerror=null;this.src='https://placehold.co/600x300/14171d/FF9F68?text=Workspace';"
-              />
-            </figure>
           </div>
         </div>
       </section>
