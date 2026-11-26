@@ -874,7 +874,13 @@
           throw new Error('Invalid visitor count');
         }
 
-        countElement.textContent = String(data.count);
+        const numericCount = Number(String(data.count).replace(/[^\d]/g, ''));
+
+        if (Number.isNaN(numericCount)) {
+          throw new Error('Invalid visitor count format');
+        }
+
+        countElement.textContent = numericCount.toLocaleString('en-US');
       } catch (error) {
         console.error('Could not load the GoatCounter total:', error);
         countElement.textContent = '—';
