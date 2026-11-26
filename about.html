@@ -664,34 +664,42 @@ function tick() {
 updateClock();
 requestAnimationFrame(tick);
 
-async function updateVisitorCount() {
-  const countElement = document.getElementById('visitor-count');
-  if (!countElement) return;
+    /* Fetch GoatCounter visitor total safely */
+    async function updateVisitorCount() {
+      const countElement = document.getElementById('visitor-count');
+      if (!countElement) return;
 
-  try {
-    const response = await fetch(
-      'https://rayyanamer.goatcounter.com/counter/TOTAL.json',
-      { cache: 'no-store' }
-    );
+      try {
+        const response = await fetch(
+          'https://rayyanamer.goatcounter.com/counter/TOTAL.json',
+          { cache: 'no-store' }
+        );
 
-    if (!response.ok) {
-      throw new Error('Visitor count unavailable');
+        if (!response.ok) {
+          throw new Error('Visitor count unavailable');
+        }
+
+        const data = await response.json();
+
+        if (typeof data.count !== 'string' && typeof data.count !== 'number') {
+          throw new Error('Invalid visitor count');
+        }
+
+        const numericCount = Number(String(data.count).replace(/[^\d]/g, ''));
+
+        if (Number.isNaN(numericCount)) {
+          throw new Error('Invalid visitor count format');
+        }
+
+        countElement.textContent = numericCount.toLocaleString('en-US');
+      } catch (error) {
+        console.error('Could not load the GoatCounter total:', error);
+        countElement.textContent = '—';
+      }
     }
 
-    const data = await response.json();
+    updateVisitorCount();
 
-    if (typeof data.count !== 'string' && typeof data.count !== 'number') {
-      throw new Error('Invalid visitor count');
-    }
-
-    countElement.textContent = String(data.count);
-  } catch (error) {
-    console.error('Could not load the GoatCounter total:', error);
-    countElement.textContent = '—';
-  }
-}
-
-updateVisitorCount();
 </script>
 </body>
 </html>
